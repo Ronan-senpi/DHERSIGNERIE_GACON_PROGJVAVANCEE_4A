@@ -45,25 +45,13 @@ public class DropBombScript : MonoBehaviour
         //main bomb
         if (Input.GetButtonDown(mainFireInput))
         {
-            Instantiate(bomb, GetSnapPosition(transform.position, bomb.transform.position.y), Quaternion.identity);
+            this.DropMainBomb();
         }
 
         //Secondary bomb
-        if ((secondaryBombCurentCurrentUse < secondaryBombMaxUse || secondaryBombMaxUse == 0) && Input.GetButtonDown(SecondaryFireInput))
+        if ( this.CanDropSecondaryBomb() && Input.GetButtonDown(SecondaryFireInput))
         {
-            GameObject i;
-            switch (bombType)
-            {
-                case BombType.Flash:
-                    i = this.FlashBomb;
-                    break;
-                case BombType.Mine:
-                default:
-                    i = this.MineBomb;
-                    break;
-            }
-            this.secondaryBombCurentCurrentUse++;
-            Instantiate(i, GetSnapPosition(transform.position, i.transform.position.y), Quaternion.identity);
+            this.DropSecondaryBomb();
         }
     }
     protected void SetMaxUse(BombeBaseScript bbs)
@@ -85,5 +73,33 @@ public class DropBombScript : MonoBehaviour
                 ((int)pos.x + 0.5f),
                 y,
                 ((int)pos.z + 0.5f));
+    }
+
+    public void DropMainBomb()
+    {
+        Instantiate(bomb, GetSnapPosition(transform.position, bomb.transform.position.y), Quaternion.identity);
+    }
+
+    public void DropSecondaryBomb()
+    {
+        GameObject i;
+        switch (bombType)
+        {
+            case BombType.Flash:
+                i = this.FlashBomb;
+                break;
+            case BombType.Mine:
+            default:
+                i = this.MineBomb;
+                break;
+        }
+        this.secondaryBombCurentCurrentUse++;
+        Instantiate(i, GetSnapPosition(transform.position, i.transform.position.y), Quaternion.identity);
+
+    }
+
+    public bool CanDropSecondaryBomb()
+    {
+        return (secondaryBombCurentCurrentUse < secondaryBombMaxUse || secondaryBombMaxUse == 0);
     }
 }
