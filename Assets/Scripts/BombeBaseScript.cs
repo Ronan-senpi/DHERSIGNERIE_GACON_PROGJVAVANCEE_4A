@@ -11,15 +11,20 @@ public class BombeBaseScript : MonoBehaviour
     [SerializeField]
     protected int range = 1;
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
-        StartCoroutine(Explosion());
+        StartCoroutine(DelayExplosion());
     }
 
-    protected IEnumerator Explosion()
+    protected virtual IEnumerator DelayExplosion()
     {
         yield return new WaitForSeconds(timer);
+        this.Explosion();
 
+    }
+
+    protected virtual void Explosion()
+    {
         Instantiate(FireObject, gameObject.transform.position, Quaternion.identity);
         for (int i = 1; i <= range; i++)
         {
@@ -51,5 +56,7 @@ public class BombeBaseScript : MonoBehaviour
             tmp4.name = "4";
 
         }
+
+        Destroy(gameObject);
     }
 }
