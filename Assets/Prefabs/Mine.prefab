@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
-  FireObject: {fileID: 7620623440834191273, guid: 0269b1d4d136e47449a6101ab8174cd4,
+  explosionObject: {fileID: 7620623440834191273, guid: 0269b1d4d136e47449a6101ab8174cd4,
     type: 3}
   range: 0
   triggerLayer:
