@@ -110,3 +110,4 @@ MonoBehaviour:
   explosionObject: {fileID: 7448683026526462048, guid: f4302394db3089f42b6a082e3348fa82,
     type: 3}
   range: 1
+  nbMaxUse: 1
