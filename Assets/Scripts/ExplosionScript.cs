@@ -24,7 +24,8 @@ public class ExplosionScript : ExplosionBaseScript
         }
         if ((PlayerLayer.value & (1 << other.gameObject.layer)) > 0)
         {
-            //  other.GetComponent<SCRIPT DE FIN DE VIE DU PLAYER>();
+            //other.GetComponent<SCRIPT DE FIN DE VIE DU PLAYER>();
+            Application.LoadLevel(Application.loadedLevel);
         }
     }
 }
