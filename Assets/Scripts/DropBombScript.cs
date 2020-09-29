@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +13,11 @@ public class DropBombScript : MonoBehaviour
     {
         if (Input.GetButtonDown(fireInput))
         {
-            Instantiate(bomb, gameObject.transform.position, Quaternion.identity);
+            var tmp = new Vector3(
+                ((int)transform.position.x + 0.5f),
+                transform.position.y,
+                ((int)transform.position.z +0.5f));
+            Instantiate(bomb, tmp, Quaternion.identity);
         }
     }
 }
