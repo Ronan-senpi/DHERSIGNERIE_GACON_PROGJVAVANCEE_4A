@@ -8,10 +8,17 @@ public class DropBombScript : MonoBehaviour
     [SerializeField]
     private GameObject bomb;
     [SerializeField]
-    private string fireInput = "Fire1";
+    private GameObject FlashBomb;
+    [SerializeField]
+    private GameObject Mine;
+    [SerializeField]
+    private string mainFireInput = "Fire1.1";
+    [SerializeField]
+    private string SecondaryFireInput = "Fire1.2";
     private void Update()
     {
-        if (Input.GetButtonDown(fireInput))
+        //main bomb
+        if (Input.GetButtonDown(mainFireInput))
         {
             var tmp = new Vector3(
                 ((int)transform.position.x + 0.5f),
@@ -19,5 +26,16 @@ public class DropBombScript : MonoBehaviour
                 ((int)transform.position.z +0.5f));
             Instantiate(bomb, tmp, Quaternion.identity);
         }
+
+        //Secondary bomb
+        if (Input.GetButtonDown(SecondaryFireInput))
+        {
+            var tmp = new Vector3(
+                ((int)transform.position.x + 0.5f),
+                transform.position.y,
+                ((int)transform.position.z + 0.5f));
+            Instantiate(bomb, tmp, Quaternion.identity);
+        }
+
     }
 }
