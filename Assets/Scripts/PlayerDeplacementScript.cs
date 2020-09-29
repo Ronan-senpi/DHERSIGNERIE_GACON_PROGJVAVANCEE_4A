@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerDeplacementScript : MonoBehaviour
 {
 
     [SerializeField] private float Speed = 3.0f;
-    [SerializeField] private string AxisHorizontal = "Horizontal";
-    [SerializeField] private string AxisVertical = "Vertical";
+    [SerializeField] private string AxisHorizontal;
+    [SerializeField] private string AxisVertical;
+    [SerializeField] private GameManager gameManager;
 
     private bool stunned = false;
 
@@ -57,4 +59,6 @@ public class PlayerDeplacementScript : MonoBehaviour
         yield return new WaitForSeconds(StunDuration);
         this.stunned=false;
     }
+
+
 }
