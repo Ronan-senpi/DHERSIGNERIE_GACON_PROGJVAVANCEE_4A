@@ -641,6 +641,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &660647317 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4524038845513812243, guid: 513a4517668657c4a9f08162dac76720,
+    type: 3}
+  m_PrefabInstance: {fileID: 4524038845218630569}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &660647324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660647317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ad4c970d154d54682fa1313b418bb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bomb: {fileID: 7158635265477362245, guid: 0c5e59ef934e0804c8c1e50db3c7fb04, type: 3}
+  FlashBomb: {fileID: 2225600817768085007, guid: 4ec28bf6b6657e241b638f34fa87a534,
+    type: 3}
+  MineBomb: {fileID: 2476078640237297053, guid: 4a3e17800b0a181478a6c2c8bef48b72,
+    type: 3}
+  bombType: 2
+  mainFireInput: Fire1.1
+  SecondaryFireInput: Fire1.2
 --- !u!1001 &1386538135
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1293,10 +1319,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4524038845513812243, guid: 513a4517668657c4a9f08162dac76720,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4524038845513812247, guid: 513a4517668657c4a9f08162dac76720,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.29
+      value: 2.44
       objectReference: {fileID: 0}
     - target: {fileID: 4524038845513812247, guid: 513a4517668657c4a9f08162dac76720,
         type: 3}
@@ -1306,7 +1337,7 @@ PrefabInstance:
     - target: {fileID: 4524038845513812247, guid: 513a4517668657c4a9f08162dac76720,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.74
+      value: 2.39
       objectReference: {fileID: 0}
     - target: {fileID: 4524038845513812247, guid: 513a4517668657c4a9f08162dac76720,
         type: 3}
