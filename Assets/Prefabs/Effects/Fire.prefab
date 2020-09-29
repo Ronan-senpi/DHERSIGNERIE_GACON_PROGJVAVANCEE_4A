@@ -106,10 +106,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b231d65431fcf34e9f732b6beaee348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroableLayer:
+  Duration: 1
+  hitLayer:
     serializedVersion: 2
     m_Bits: 256
   BombLayer:
     serializedVersion: 2
     m_Bits: 512
-  Duration: 1
