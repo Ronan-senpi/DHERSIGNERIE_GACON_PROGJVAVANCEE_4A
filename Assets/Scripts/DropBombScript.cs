@@ -19,6 +19,27 @@ public class DropBombScript : MonoBehaviour
     private string mainFireInput = "Fire1.1";
     [SerializeField]
     private string SecondaryFireInput = "Fire1.2";
+
+    protected int secondaryBombMaxUse = 1;
+    protected int secondaryBombCurentCurrentUse = 0;
+    private void Start()
+    {
+        BombeBaseScript bbs;
+        switch (bombType)
+        {
+            case BombType.Flash:
+                bbs = this.FlashBomb.GetComponent<BombeBaseScript>();
+                SetMaxUse(bbs);
+                break;
+            case BombType.Mine:
+            default:
+                bbs = this.MineBomb.GetComponent<BombeBaseScript>();
+                SetMaxUse(bbs);
+                break;
+        }
+
+    }
+
     private void Update()
     {
         //main bomb
@@ -28,7 +49,7 @@ public class DropBombScript : MonoBehaviour
         }
 
         //Secondary bomb
-        if (Input.GetButtonDown(SecondaryFireInput))
+        if ((secondaryBombCurentCurrentUse < secondaryBombMaxUse || secondaryBombMaxUse == 0) && Input.GetButtonDown(SecondaryFireInput))
         {
             GameObject i;
             switch (bombType)
@@ -41,9 +62,23 @@ public class DropBombScript : MonoBehaviour
                     i = this.MineBomb;
                     break;
             }
+            this.secondaryBombCurentCurrentUse++;
             Instantiate(i, GetSnapPosition(transform.position, i.transform.position.y), Quaternion.identity);
         }
     }
+    protected void SetMaxUse(BombeBaseScript bbs)
+    {
+        if (bbs != null)
+        {
+            secondaryBombMaxUse = bbs.GetMaxUserBomb();
+        }
+    }
+    /// <summary>
+    /// Snap au centre d'une Unit
+    /// </summary>
+    /// <param name="pos">Position du player</param>
+    /// <param name="y">Z du prefabs</param>
+    /// <returns>position centre unit</returns>
     protected Vector3 GetSnapPosition(Vector3 pos, float y)
     {
         return new Vector3(

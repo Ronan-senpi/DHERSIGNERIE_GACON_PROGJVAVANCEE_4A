@@ -664,7 +664,7 @@ MonoBehaviour:
     type: 3}
   MineBomb: {fileID: 2476078640237297053, guid: 4a3e17800b0a181478a6c2c8bef48b72,
     type: 3}
-  bombType: 2
+  bombType: 0
   mainFireInput: Fire1.1
   SecondaryFireInput: Fire1.2
 --- !u!1001 &1386538135
