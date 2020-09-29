@@ -9,11 +9,12 @@ public class PlayerDeplacementScript : MonoBehaviour
     [SerializeField] private string AxisHorizontal;
     [SerializeField] private string AxisVertical;
 
-    
+    private Rigidbody rb;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -42,5 +43,6 @@ public class PlayerDeplacementScript : MonoBehaviour
 
         gameObject.transform.position += direction * Time.deltaTime * Speed;
         
+        //rb.AddForce(direction * Speed);
     }
 }
