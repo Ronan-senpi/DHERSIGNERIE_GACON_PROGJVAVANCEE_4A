@@ -6,15 +6,15 @@ public class PlayerDeplacementScript : MonoBehaviour
 {
 
     [SerializeField] private float Speed = 3.0f;
-    [SerializeField] private string AxisHorizontal;
-    [SerializeField] private string AxisVertical;
+    [SerializeField] private string AxisHorizontal = "Horizontal";
+    [SerializeField] private string AxisVertical = "Vertical";
 
-    private Rigidbody rb;
+    private bool stunned = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
@@ -24,7 +24,7 @@ public class PlayerDeplacementScript : MonoBehaviour
         Vector3 direction = Vector3.zero;
 
 
-        if (Input.GetAxis(AxisHorizontal) > 0 ){
+        if (Input.GetAxis(AxisHorizontal) > 0  ){
             direction.z++;
         }
 
@@ -40,9 +40,21 @@ public class PlayerDeplacementScript : MonoBehaviour
             direction.x++;
         }
 
+        if(!stunned)
+            gameObject.transform.position += direction * Time.deltaTime * Speed;
 
-        gameObject.transform.position += direction * Time.deltaTime * Speed;
+
         
-        //rb.AddForce(direction * Speed);
+    }
+
+    public void Stuned (float StunDuration){
+        StartCoroutine(Stun(StunDuration));
+    }
+
+    protected IEnumerator Stun(float StunDuration)
+    {
+        this.stunned=true;
+        yield return new WaitForSeconds(StunDuration);
+        this.stunned=false;
     }
 }

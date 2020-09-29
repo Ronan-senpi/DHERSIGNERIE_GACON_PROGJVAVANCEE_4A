@@ -8,8 +8,9 @@ public class ExplosionFlashScript : ExplosionBaseScript
     protected float StunDuration = 1f;
     protected override void hit(Collider other)
     {
-        //TODO : PlayerDeplacementScript.Stuned(StunDuration);
-        Debug.LogError("PlayerDeplacementScript.Stuned(StunDuration) is not implemented");
-       
+        PlayerDeplacementScript pylr = other.GetComponent<PlayerDeplacementScript>();
+        if(pylr!=null){
+            pylr.Stuned(StunDuration);
+        }
     }
 }
