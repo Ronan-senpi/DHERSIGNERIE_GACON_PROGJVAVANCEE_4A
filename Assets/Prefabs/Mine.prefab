@@ -112,6 +112,7 @@ MonoBehaviour:
   explosionObject: {fileID: 7620623440834191273, guid: 0269b1d4d136e47449a6101ab8174cd4,
     type: 3}
   range: 0
+  nbMaxUse: 3
   triggerLayer:
     serializedVersion: 2
     m_Bits: 256

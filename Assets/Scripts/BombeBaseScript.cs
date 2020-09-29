@@ -10,6 +10,9 @@ public class BombeBaseScript : MonoBehaviour
     protected GameObject explosionObject;
     [SerializeField]
     protected int range = 1;
+    //0 = infini
+    [SerializeField]
+    protected int nbMaxUse = 0;
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -58,5 +61,13 @@ public class BombeBaseScript : MonoBehaviour
         }
 
         Destroy(gameObject);
+    }
+    /// <summary>
+    /// Retourne le nombre d'utilisation max de la bombe (0 = infini)
+    /// </summary>
+    /// <returns></returns>
+    public int GetMaxUserBomb()
+    {
+        return nbMaxUse;
     }
 }

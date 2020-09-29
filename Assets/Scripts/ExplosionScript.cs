@@ -6,6 +6,8 @@ public class ExplosionScript : ExplosionBaseScript
 {
     [SerializeField]
     protected LayerMask BombLayer;
+    [SerializeField]
+    protected LayerMask PlayerLayer;
 
     protected override void OnTriggerEnter(Collider other)
     {
@@ -19,6 +21,10 @@ public class ExplosionScript : ExplosionBaseScript
                 Destroy(other.gameObject);
 
             }
+        }
+        if ((PlayerLayer.value & (1 << other.gameObject.layer)) > 0)
+        {
+            //  other.GetComponent<SCRIPT DE FIN DE VIE DU PLAYER>();
         }
     }
 }
