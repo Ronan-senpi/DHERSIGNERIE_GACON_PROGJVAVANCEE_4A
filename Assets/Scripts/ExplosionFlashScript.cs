@@ -10,5 +10,6 @@ public class ExplosionFlashScript : ExplosionBaseScript
     {
         //TODO : PlayerDeplacementScript.Stuned(StunDuration);
         Debug.LogError("PlayerDeplacementScript.Stuned(StunDuration) is not implemented");
+       
     }
 }

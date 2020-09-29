@@ -10,7 +10,7 @@ public class DropBombScript : MonoBehaviour
     private string fireInput = "Fire1";
     private void Update()
     {
-        if (Input.GetAxis(fireInput) != 0)
+        if (Input.GetButtonDown(fireInput))
         {
             Instantiate(bomb, gameObject.transform.position, Quaternion.identity);
         }
