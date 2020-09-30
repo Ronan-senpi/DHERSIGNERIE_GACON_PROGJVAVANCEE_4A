@@ -11,7 +11,6 @@ public class ExplosionScript : ExplosionBaseScript
 
     protected override void OnTriggerEnter(Collider other)
     {
-        base.OnTriggerEnter(other);
         if ((BombLayer.value & (1 << other.gameObject.layer)) > 0)
         {
             BombeBaseScript bbs = other.GetComponent<BombeBaseScript>();
@@ -19,13 +18,19 @@ public class ExplosionScript : ExplosionBaseScript
             {
                 bbs.Explosion();
                 Destroy(other.gameObject);
-
             }
         }
         if ((PlayerLayer.value & (1 << other.gameObject.layer)) > 0)
         {
             //other.GetComponent<SCRIPT DE FIN DE VIE DU PLAYER>();
-            Application.LoadLevel(Application.loadedLevel);
+            //Application.LoadLevel(Application.loadedLevel);
+            var pds = other.GetComponent<PlayerDeathScript>();
+            if (pds != null)
+            {
+                pds.dead();
+            }
         }
+        base.OnTriggerEnter(other);
+
     }
 }
