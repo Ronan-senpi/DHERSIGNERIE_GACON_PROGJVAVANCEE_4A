@@ -1,24 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerDeplacementScript : MonoBehaviour
 {
 
     [SerializeField] private float Speed = 3.0f;
-    [SerializeField] private string AxisHorizontal = "Horizontal";
-    [SerializeField] private string AxisVertical = "Vertical";
+    [SerializeField] private string AxisHorizontal;
+    [SerializeField] private string AxisVertical;
+    [SerializeField] private GameManager gameManager;
 
     private bool stunned = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         
         Vector3 direction = Vector3.zero;
@@ -51,10 +47,12 @@ public class PlayerDeplacementScript : MonoBehaviour
         StartCoroutine(Stun(StunDuration));
     }
 
-    protected IEnumerator Stun(float StunDuration)
+    protected virtual IEnumerator Stun(float StunDuration)
     {
         this.stunned=true;
         yield return new WaitForSeconds(StunDuration);
         this.stunned=false;
     }
+
+
 }
