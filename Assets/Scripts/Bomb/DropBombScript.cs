@@ -90,28 +90,35 @@ public class DropBombScript : MonoBehaviour
     public void DropSecondaryBomb()
     {
         GameObject i;
+        bool isMine;
         switch (bombType)
         {
             case BombType.Flash:
                 i = this.FlashBomb;
+                isMine = false;
                 break;
             case BombType.Mine:
             default:
                 i = this.MineBomb;
+                isMine = true;
                 break;
         }
         this.secondaryBombCurentCurrentUse++;
-        Instantiate(i, GetSnapPosition(transform.position, i.transform.position.y), Quaternion.identity);
+        
+        var instance = Instantiate(i, GetSnapPosition(transform.position, i.transform.position.y), Quaternion.identity);
+        if (isMine)
+            bombs.Add(instance);
 
     }
 
-    private bool CanDropMainBomb()
+    public bool CanDropMainBomb()
     {
         this.bombs.RemoveAll(x => x == null);
         return bombs.Count < maxBomb;
     }
     public bool CanDropSecondaryBomb()
     {
-        return (secondaryBombCurentCurrentUse < secondaryBombMaxUse || secondaryBombMaxUse == 0);
+        this.bombs.RemoveAll(x => x == null);
+        return (secondaryBombCurentCurrentUse < secondaryBombMaxUse || secondaryBombMaxUse == 0) && bombs.Count < maxBomb;
     }
 }
