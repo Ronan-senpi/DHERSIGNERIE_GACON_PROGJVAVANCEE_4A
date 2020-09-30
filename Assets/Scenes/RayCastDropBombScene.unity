@@ -133,6 +133,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BrokableWall (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 2877429000836106384, guid: 185f222cd8ee2f5469dc5f8d011bf780,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 2877429000836106388, guid: 185f222cd8ee2f5469dc5f8d011bf780,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -728,6 +733,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BrokableWall (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2877429000836106384, guid: 185f222cd8ee2f5469dc5f8d011bf780,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 2877429000836106388, guid: 185f222cd8ee2f5469dc5f8d011bf780,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -802,6 +812,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BrokableWall (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2877429000836106384, guid: 185f222cd8ee2f5469dc5f8d011bf780,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2877429000836106388, guid: 185f222cd8ee2f5469dc5f8d011bf780,
         type: 3}
@@ -953,6 +968,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BrokableWall (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 2877429000836106384, guid: 185f222cd8ee2f5469dc5f8d011bf780,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 2877429000836106388, guid: 185f222cd8ee2f5469dc5f8d011bf780,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1027,6 +1047,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BrokableWall (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2877429000836106384, guid: 185f222cd8ee2f5469dc5f8d011bf780,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2877429000836106388, guid: 185f222cd8ee2f5469dc5f8d011bf780,
         type: 3}
@@ -1346,6 +1371,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BrokableWall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2877429000836106384, guid: 185f222cd8ee2f5469dc5f8d011bf780,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 2877429000836106388, guid: 185f222cd8ee2f5469dc5f8d011bf780,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1495,6 +1525,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BrokableWall (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2877429000836106384, guid: 185f222cd8ee2f5469dc5f8d011bf780,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2877429000836106388, guid: 185f222cd8ee2f5469dc5f8d011bf780,
         type: 3}
@@ -1672,7 +1707,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1807020200
 Transform:
@@ -2007,6 +2042,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BrokableWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2877429000836106384, guid: 185f222cd8ee2f5469dc5f8d011bf780,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2877429000836106388, guid: 185f222cd8ee2f5469dc5f8d011bf780,
         type: 3}
