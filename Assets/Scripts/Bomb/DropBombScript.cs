@@ -2,6 +2,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 
@@ -19,7 +21,10 @@ public class DropBombScript : MonoBehaviour
     private string mainFireInput = "Fire1.1";
     [SerializeField]
     private string SecondaryFireInput = "Fire1.2";
+    [SerializeField]
+    private int maxBomb = 1;
 
+    List<GameObject> bombs = new List<GameObject>();
     protected int secondaryBombMaxUse = 1;
     protected int secondaryBombCurentCurrentUse = 0;
     private void Start()
@@ -43,17 +48,19 @@ public class DropBombScript : MonoBehaviour
     private void Update()
     {
         //main bomb
-        if (Input.GetButtonDown(mainFireInput))
+        if (Input.GetButtonDown(mainFireInput) && CanDropMainBomb())
         {
             this.DropMainBomb();
         }
 
         //Secondary bomb
-        if ( this.CanDropSecondaryBomb() && Input.GetButtonDown(SecondaryFireInput))
+        if (Input.GetButtonDown(SecondaryFireInput) && this.CanDropSecondaryBomb())
         {
             this.DropSecondaryBomb();
         }
     }
+
+
     protected void SetMaxUse(BombeBaseScript bbs)
     {
         if (bbs != null)
@@ -77,7 +84,7 @@ public class DropBombScript : MonoBehaviour
 
     public void DropMainBomb()
     {
-        Instantiate(bomb, GetSnapPosition(transform.position, bomb.transform.position.y), Quaternion.identity);
+        bombs.Add(Instantiate(bomb, GetSnapPosition(transform.position, bomb.transform.position.y), Quaternion.identity));
     }
 
     public void DropSecondaryBomb()
@@ -98,6 +105,11 @@ public class DropBombScript : MonoBehaviour
 
     }
 
+    private bool CanDropMainBomb()
+    {
+        this.bombs.RemoveAll(x => x == null);
+        return bombs.Count < maxBomb;
+    }
     public bool CanDropSecondaryBomb()
     {
         return (secondaryBombCurentCurrentUse < secondaryBombMaxUse || secondaryBombMaxUse == 0);
