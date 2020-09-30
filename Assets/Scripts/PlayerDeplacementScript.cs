@@ -13,14 +13,8 @@ public class PlayerDeplacementScript : MonoBehaviour
 
     private bool stunned = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         
         Vector3 direction = Vector3.zero;
@@ -53,7 +47,7 @@ public class PlayerDeplacementScript : MonoBehaviour
         StartCoroutine(Stun(StunDuration));
     }
 
-    protected IEnumerator Stun(float StunDuration)
+    protected virtual IEnumerator Stun(float StunDuration)
     {
         this.stunned=true;
         yield return new WaitForSeconds(StunDuration);

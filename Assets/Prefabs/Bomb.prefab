@@ -13,12 +13,13 @@ GameObject:
   - component: {fileID: 7158635265477362242}
   - component: {fileID: 7158635265477362243}
   - component: {fileID: 7158635265477362244}
+  - component: {fileID: 4420982144310092473}
   m_Layer: 9
   m_Name: Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7158635265477362240
 Transform:
@@ -110,3 +111,20 @@ MonoBehaviour:
   explosionObject: {fileID: 7620623440834191273, guid: 0269b1d4d136e47449a6101ab8174cd4,
     type: 3}
   range: 1
+  nbMaxUse: 0
+--- !u!208 &4420982144310092473
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7158635265477362245}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
