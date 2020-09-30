@@ -75,10 +75,10 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        p1Score = 0;
+        /*p1Score = 0;
         p2Score = 0;
-        StartGame();
-        //Instantiate<GameObject>(PlayerPrefab, Vector3.zero, Quaternion.identity);
-        //Application.LoadLevel(Application.loadedLevel);
+        StartGame();*/
+        
+        Application.LoadLevel(Application.loadedLevel);
     }
 }
