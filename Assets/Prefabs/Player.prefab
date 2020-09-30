@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 4524038845513812244}
   - component: {fileID: 4524038845513812245}
   - component: {fileID: 4524038845513812242}
-  - component: {fileID: 4524038845513812246}
   - component: {fileID: 4524038845513812329}
+  - component: {fileID: 4524038845513812246}
+  - component: {fileID: 4524038845218630571}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -96,22 +97,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4524038845513812246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4524038845513812243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec2e5a6e933a1944aa30fa510f150325, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 3
-  AxisHorizontal: Horizontal
-  AxisVertical: Vertical
-  gameManager: {fileID: 0}
 --- !u!54 &4524038845513812329
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -128,3 +113,39 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &4524038845513812246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4524038845513812243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec2e5a6e933a1944aa30fa510f150325, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 3
+  AxisHorizontal: Horizontal
+  AxisVertical: Vertical
+  gameManager: {fileID: 0}
+--- !u!114 &4524038845218630571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4524038845513812243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ad4c970d154d54682fa1313b418bb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bomb: {fileID: 7158635265477362245, guid: 0c5e59ef934e0804c8c1e50db3c7fb04, type: 3}
+  FlashBomb: {fileID: 2225600817768085007, guid: 4ec28bf6b6657e241b638f34fa87a534,
+    type: 3}
+  MineBomb: {fileID: 2476078640237297053, guid: 4a3e17800b0a181478a6c2c8bef48b72,
+    type: 3}
+  bombType: 0
+  mainFireInput: Fire1.1
+  SecondaryFireInput: Fire1.2

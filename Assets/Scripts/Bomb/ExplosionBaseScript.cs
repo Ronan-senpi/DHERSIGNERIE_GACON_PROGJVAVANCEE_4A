@@ -14,7 +14,7 @@ public class ExplosionBaseScript : MonoBehaviour
         //Compare sur les bit et non sur la text plus rapide
         if ((hitLayer.value & (1 << other.gameObject.layer)) > 0)
         {
-            hit(other);
+            //hit(other);
         }
     }
     // Start is called before the first frame update
