@@ -25,7 +25,8 @@ public class ExplosionScript : ExplosionBaseScript
             //other.GetComponent<SCRIPT DE FIN DE VIE DU PLAYER>();
             //Application.LoadLevel(Application.loadedLevel);
             var pds = other.GetComponent<PlayerDeathScript>();
-            if (pds != null)
+
+            if (pds != null && !other.GetComponent<PlayerDeplacementScript>().IsInvincible())
             {
                 pds.dead();
             }

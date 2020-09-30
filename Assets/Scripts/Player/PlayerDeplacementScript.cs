@@ -12,6 +12,7 @@ public class PlayerDeplacementScript : MonoBehaviour
     [SerializeField] private GameManager gameManager;
 
     private bool stunned = false;
+    private bool invincible = false;
 
     // Update is called once per frame
     protected virtual void Update()
@@ -36,13 +37,15 @@ public class PlayerDeplacementScript : MonoBehaviour
             direction.x++;
         }
 
-        if(!stunned)
+        if(!stunned && !invincible)
             gameObject.transform.position += direction * Time.deltaTime * Speed;
 
 
         
     }
 
+
+    /*----Player States------*/
     public void Stuned (float StunDuration){
         StartCoroutine(Stun(StunDuration));
     }
@@ -53,6 +56,23 @@ public class PlayerDeplacementScript : MonoBehaviour
         yield return new WaitForSeconds(StunDuration);
         this.stunned=false;
     }
+
+    public void Reborn (){
+        StartCoroutine(Stun(0.25f));
+        StartCoroutine(Invincible(1f));
+    }
+
+    protected virtual IEnumerator Invincible(float StunDuration)
+    {
+        this.invincible=true;
+        yield return new WaitForSeconds(StunDuration);
+        this.invincible=false;
+    }
+
+    public bool IsStunned(){return this.stunned;}
+    public bool IsInvincible(){return this.invincible;}
+
+
 
 
 }
