@@ -249,6 +249,7 @@ MonoBehaviour:
   bombType: 0
   mainFireInput: Fire2.1
   SecondaryFireInput: Fire2.2
+  maxBomb: 1
 --- !u!114 &142913365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2200,26 +2201,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4524038845218630571, guid: 513a4517668657c4a9f08162dac76720,
-        type: 3}
-      propertyPath: bombType
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4524038845513812243, guid: 513a4517668657c4a9f08162dac76720,
         type: 3}
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
-    - target: {fileID: 4524038845513812243, guid: 513a4517668657c4a9f08162dac76720,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4524038845513812245, guid: 513a4517668657c4a9f08162dac76720,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 0a86cf04f94b31e408aeaa8fa3cbd160, type: 2}
     - target: {fileID: 4524038845513812246, guid: 513a4517668657c4a9f08162dac76720,
         type: 3}
       propertyPath: gameManager
@@ -2462,6 +2448,7 @@ MonoBehaviour:
   bombType: 0
   mainFireInput: Fire2.1
   SecondaryFireInput: Fire2.2
+  maxBomb: 1
 --- !u!54 &5094389666916544892
 Rigidbody:
   m_ObjectHideFlags: 0

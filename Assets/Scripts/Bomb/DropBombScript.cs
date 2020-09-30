@@ -105,7 +105,7 @@ public class DropBombScript : MonoBehaviour
 
     }
 
-    private bool CanDropMainBomb()
+    public bool CanDropMainBomb()
     {
         this.bombs.RemoveAll(x => x == null);
         return bombs.Count < maxBomb;

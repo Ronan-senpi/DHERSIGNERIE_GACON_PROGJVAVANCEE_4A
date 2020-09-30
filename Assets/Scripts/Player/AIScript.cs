@@ -25,23 +25,58 @@ public class AIScript : PlayerDeplacementScript
     // Update is called once per frame
     protected override void Update()
     {
+        if (!canAttack)
+            return;
 
-
-        agent.SetDestination(target.transform.position);
-
-        if (agent.remainingDistance != Mathf.Infinity && agent.remainingDistance <= agent.stoppingDistance && canAttack)
+        Vector3 direction = Vector3.zero;
+        switch (Random.Range(1, 7))
         {
-            canAttack = false;
-            if (dropBomb.CanDropSecondaryBomb() && Random.Range(0, 2) == 1)
-            {
-                dropBomb.DropSecondaryBomb();
-            }
-            else
-            {
-                dropBomb.DropMainBomb();
-            }
-            StartCoroutine(Cooldown(attackCooldown));
+            case 1:
+                if (dropBomb.CanDropSecondaryBomb())
+                {
+                    dropBomb.DropSecondaryBomb();
+                }
+                break;
+            case 2:
+                if (dropBomb.CanDropMainBomb())
+                {
+                    dropBomb.DropMainBomb();
+                }
+                break;
+            case 3:
+                direction.z++;
+                break;
+            case 4:
+                direction.z--;
+                break;
+            case 5:
+                direction.x--;
+                break;
+            case 6:
+                direction.x++;
+                break;
+            default:
+                break;
         }
+
+        if (!stunned)
+            gameObject.transform.position += direction * Time.deltaTime * Speed;
+
+        //agent.SetDestination(target.transform.position);
+
+        //if (agent.remainingDistance != Mathf.Infinity && agent.remainingDistance <= agent.stoppingDistance && canAttack)
+        //{
+        //    canAttack = false;
+        //    if (dropBomb.CanDropSecondaryBomb() && Random.Range(0, 2) == 1)
+        //    {
+        //        dropBomb.DropSecondaryBomb();
+        //    }
+        //    else
+        //    {
+        //        dropBomb.DropMainBomb();
+        //    }
+        //    StartCoroutine(Cooldown(attackCooldown));
+        //}
     }
     IEnumerator Cooldown(float attackCooldown)
     {
