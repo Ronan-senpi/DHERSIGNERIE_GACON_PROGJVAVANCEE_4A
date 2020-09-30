@@ -151,6 +151,9 @@ MonoBehaviour:
   mainFireInput: Fire1.1
   SecondaryFireInput: Fire1.2
   maxBomb: 1
+  LayerCancelBombDrop:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &8402278217242421071
 MonoBehaviour:
   m_ObjectHideFlags: 0

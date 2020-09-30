@@ -23,6 +23,8 @@ public class DropBombScript : MonoBehaviour
     private string SecondaryFireInput = "Fire1.2";
     [SerializeField]
     private int maxBomb = 1;
+    [SerializeField]
+    private LayerMask LayerCancelBombDrop;
 
     List<GameObject> bombs = new List<GameObject>();
     protected int secondaryBombMaxUse = 1;
@@ -48,13 +50,13 @@ public class DropBombScript : MonoBehaviour
     private void Update()
     {
         //main bomb
-        if (Input.GetButtonDown(mainFireInput) && CanDropMainBomb())
+        if (Input.GetButtonDown(mainFireInput) && CanDropMainBomb() && IsEmptyLocation())
         {
             this.DropMainBomb();
         }
 
         //Secondary bomb
-        if (Input.GetButtonDown(SecondaryFireInput) && this.CanDropSecondaryBomb())
+        if (Input.GetButtonDown(SecondaryFireInput) && this.CanDropSecondaryBomb() && IsEmptyLocation())
         {
             this.DropSecondaryBomb();
         }
@@ -74,13 +76,14 @@ public class DropBombScript : MonoBehaviour
     /// <param name="pos">Position du player</param>
     /// <param name="y">Z du prefabs</param>
     /// <returns>position centre unit</returns>
-    protected Vector3 GetSnapPosition(Vector3 pos, float y)
+    protected Vector3 GetSnapPosition(Vector3 pos, float y = 0)
     {
         return new Vector3(
                 ((int)pos.x + 0.5f),
                 y,
                 ((int)pos.z + 0.5f));
     }
+
 
     public void DropMainBomb()
     {
@@ -104,7 +107,7 @@ public class DropBombScript : MonoBehaviour
                 break;
         }
         this.secondaryBombCurentCurrentUse++;
-        
+
         var instance = Instantiate(i, GetSnapPosition(transform.position, i.transform.position.y), Quaternion.identity);
         if (isMine)
             bombs.Add(instance);
@@ -120,5 +123,20 @@ public class DropBombScript : MonoBehaviour
     {
         this.bombs.RemoveAll(x => x == null);
         return (secondaryBombCurentCurrentUse < secondaryBombMaxUse || secondaryBombMaxUse == 0) && bombs.Count < maxBomb;
+    }
+    /// <summary>
+    /// Si l'emplacement ne contient pas de bombe
+    /// </summary>
+    public bool IsEmptyLocation()
+    {
+        RaycastHit hit;
+        Debug.DrawRay(GetSnapPosition(transform.position), transform.up * 1, Color.red,3);
+        var v = GetSnapPosition(transform.position);
+        if (!Physics.Raycast(v, Vector3.up, out hit, 2, LayerCancelBombDrop.value, QueryTriggerInteraction.Collide))
+        {
+            Debug.Log("Can drop the bomb ! ");
+            return true;
+        }
+        return false;
     }
 }

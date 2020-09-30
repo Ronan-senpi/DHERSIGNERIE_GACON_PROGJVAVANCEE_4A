@@ -62,14 +62,14 @@ public class AIScript : PlayerDeplacementScript
         switch (rdm)
         {
             case 1:
-                if (dropBomb.CanDropSecondaryBomb())
+                if (dropBomb.CanDropSecondaryBomb() && dropBomb.IsEmptyLocation())
                 {
                     dropBomb.DropSecondaryBomb();
                 }
                 StartResetRdm(0.2f);
                 break;
             case 2:
-                if (dropBomb.CanDropMainBomb())
+                if (dropBomb.CanDropMainBomb() && dropBomb.IsEmptyLocation())
                 {
                     dropBomb.DropMainBomb();
                 }
