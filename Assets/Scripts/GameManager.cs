@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,6 +24,11 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI winnerTxt;
+
+    [SerializeField] private Button RestartBtn;
+    [SerializeField] private Image RestartImg;
+    [SerializeField] private Text RestartBtnText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,10 +46,18 @@ public class GameManager : MonoBehaviour
         {
             p1Score++;
             p1ScoreTxt.text = P1_SCORE_TXT + p1Score.ToString();
-            if (true)
-            {
+        }
 
-            }
+        if (p1Score >= maxScore || p2Score >= maxScore){
+            //détruire la map
+            winnerTxt.enabled = true;
+            if(p1Score >= maxScore)
+                winnerTxt.text = "Player 1 wins!";
+            else
+                winnerTxt.text = "Player 2 wins!";
+            RestartBtn.enabled = true;
+            RestartImg.enabled = true;
+            RestartBtnText.enabled = true;
         }
 
     }
@@ -52,13 +66,19 @@ public class GameManager : MonoBehaviour
         p1ScoreTxt.text = P1_SCORE_TXT + p1Score.ToString();
         p2ScoreTxt.text = P2_SCORE_TXT + p2Score.ToString();
         winnerTxt.enabled = false;
+        RestartBtn.enabled = false;
+        RestartImg.enabled = false;
+        RestartBtnText.enabled = false;
         //Instantiate<GameObject>(PlayerPrefab, Vector3.zero, Quaternion.identity);
         //Instantiate<GameObject>(PlayerPrefab, Vector3.one, Quaternion.identity);
     }
 
     public void RestartGame()
     {
-        //Instantiate<GameObject>(PlayerPrefab, Vector3.zero, Quaternion.identity);
-        //Application.LoadLevel(Application.loadedLevel);
+        /*p1Score = 0;
+        p2Score = 0;
+        StartGame();*/
+        
+        Application.LoadLevel(Application.loadedLevel);
     }
 }

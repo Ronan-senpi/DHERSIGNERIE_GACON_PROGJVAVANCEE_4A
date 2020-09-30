@@ -7659,8 +7659,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 3
-  AxisHorizontal: Horizontal2
-  AxisVertical: Vertical2
+  AxisHorizontal: Horizontal
+  AxisVertical: Vertical
   gameManager: {fileID: 0}
 --- !u!114 &5097351505614621913
 MonoBehaviour:
@@ -7680,8 +7680,8 @@ MonoBehaviour:
   MineBomb: {fileID: 2476078640237297053, guid: 4a3e17800b0a181478a6c2c8bef48b72,
     type: 3}
   bombType: 0
-  mainFireInput: Fire2.1
-  SecondaryFireInput: Fire2.2
+  mainFireInput: Fire1.1
+  SecondaryFireInput: Fire1.2
 --- !u!114 &8307361456295395336
 MonoBehaviour:
   m_ObjectHideFlags: 0
