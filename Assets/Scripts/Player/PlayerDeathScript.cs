@@ -23,8 +23,13 @@ public class PlayerDeathScript : MonoBehaviour
 
     public void dead()
     {
-        gameObject.transform.position = spawn.transform.position;
-        gameObject.GetComponent<PlayerDeplacementScript>().Reborn();
         gameManager.EndRound(playerId);
+        if(!gameManager.IsFinished()){
+            gameObject.transform.position = spawn.transform.position;
+            gameObject.GetComponent<PlayerDeplacementScript>().Reborn();
+        }
+        else{
+            Destroy(gameObject);
+        }
     }
 }
