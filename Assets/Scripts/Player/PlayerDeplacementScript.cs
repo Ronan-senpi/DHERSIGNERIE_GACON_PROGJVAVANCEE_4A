@@ -6,13 +6,14 @@ using UnityEngine.SceneManagement;
 public class PlayerDeplacementScript : MonoBehaviour
 {
 
-    [SerializeField] private float Speed = 3.0f;
+    [SerializeField] protected float Speed = 3.0f;
     [SerializeField] private string AxisHorizontal;
     [SerializeField] private string AxisVertical;
     [SerializeField] private GameManager gameManager;
 
-    private bool stunned = false;
     private bool invincible = false;
+
+    protected bool stunned = false;
 
     // Update is called once per frame
     protected virtual void Update()

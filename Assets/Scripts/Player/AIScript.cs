@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class AIScript : PlayerDeplacementScript
 {
     [SerializeField]
-    private float attackCooldown;
+    private float cooldown;
     [SerializeField]
     private GameObject target;
     [SerializeField]
@@ -15,6 +15,9 @@ public class AIScript : PlayerDeplacementScript
     DropBombScript dropBomb;
 
     bool canAttack = false;
+    int? rdm;
+    int lastRdm = 0;
+    private bool canReset = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,23 +28,92 @@ public class AIScript : PlayerDeplacementScript
     // Update is called once per frame
     protected override void Update()
     {
+        //agent.SetDestination(target.transform.position);
 
+        //if (agent.remainingDistance != Mathf.Infinity && agent.remainingDistance <= agent.stoppingDistance && canAttack)
+        //{
+        //    canAttack = false;
+        //    if (dropBomb.CanDropSecondaryBomb() && Random.Range(0, 2) == 1)
+        //    {
+        //        dropBomb.DropSecondaryBomb();
+        //    }
+        //    else
+        //    {
+        //        dropBomb.DropMainBomb();
+        //    }
+        //    StartCoroutine(Cooldown(attackCooldown));
+        //}
+    }
 
-        agent.SetDestination(target.transform.position);
+    private void FixedUpdate()
+    {
+        if (!canAttack)
+            return;
 
-        if (agent.remainingDistance != Mathf.Infinity && agent.remainingDistance <= agent.stoppingDistance && canAttack)
+        Vector3 direction = Vector3.zero;
+        if (rdm == null)
         {
-            canAttack = false;
-            if (dropBomb.CanDropSecondaryBomb() && Random.Range(0, 2) == 1)
+            do
             {
-                dropBomb.DropSecondaryBomb();
-            }
-            else
-            {
-                dropBomb.DropMainBomb();
-            }
-            StartCoroutine(Cooldown(attackCooldown));
+                rdm = Random.Range(1, 7);
+            } while (rdm == lastRdm);
+            
         }
+        switch (rdm)
+        {
+            case 1:
+                if (dropBomb.CanDropSecondaryBomb() && dropBomb.IsEmptyLocation())
+                {
+                    dropBomb.DropSecondaryBomb();
+                }
+                StartResetRdm(0.2f);
+                break;
+            case 2:
+                if (dropBomb.CanDropMainBomb() && dropBomb.IsEmptyLocation())
+                {
+                    dropBomb.DropMainBomb();
+                }
+                StartResetRdm(0.2f);
+                break;
+            case 3:
+                direction.z++;
+                StartResetRdm(cooldown);
+                break;
+            case 4:
+                direction.z--;
+                StartResetRdm(cooldown);
+                break;
+            case 5:
+                direction.x--;
+                StartResetRdm(cooldown);
+                break;
+            case 6:
+                direction.x++;
+                StartResetRdm(cooldown);
+
+                break;
+            default:
+                break;
+        }
+        lastRdm = rdm.HasValue ? rdm.Value : 0;
+        if (!stunned)
+            gameObject.transform.position += direction * Time.deltaTime * Speed;
+
+    }
+
+    void StartResetRdm(float cool)
+    {
+        if (canReset)
+        {
+            canReset = false;
+            StartCoroutine(resetRdm(cool));
+        }
+    }
+    IEnumerator resetRdm(float cool)
+    {
+        yield return new WaitForSeconds(cool);
+        canReset = true;
+        rdm = null;
     }
     IEnumerator Cooldown(float attackCooldown)
     {

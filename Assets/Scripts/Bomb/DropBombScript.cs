@@ -2,6 +2,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 
@@ -19,7 +21,12 @@ public class DropBombScript : MonoBehaviour
     private string mainFireInput = "Fire1.1";
     [SerializeField]
     private string SecondaryFireInput = "Fire1.2";
+    [SerializeField]
+    private int maxBomb = 1;
+    [SerializeField]
+    private LayerMask LayerCancelBombDrop;
 
+    List<GameObject> bombs = new List<GameObject>();
     protected int secondaryBombMaxUse = 1;
     protected int secondaryBombCurentCurrentUse = 0;
     private void Start()
@@ -43,17 +50,19 @@ public class DropBombScript : MonoBehaviour
     private void Update()
     {
         //main bomb
-        if (Input.GetButtonDown(mainFireInput))
+        if (Input.GetButtonDown(mainFireInput) && CanDropMainBomb() && IsEmptyLocation())
         {
             this.DropMainBomb();
         }
 
         //Secondary bomb
-        if ( this.CanDropSecondaryBomb() && Input.GetButtonDown(SecondaryFireInput))
+        if (Input.GetButtonDown(SecondaryFireInput) && this.CanDropSecondaryBomb() && IsEmptyLocation())
         {
             this.DropSecondaryBomb();
         }
     }
+
+
     protected void SetMaxUse(BombeBaseScript bbs)
     {
         if (bbs != null)
@@ -67,7 +76,7 @@ public class DropBombScript : MonoBehaviour
     /// <param name="pos">Position du player</param>
     /// <param name="y">Z du prefabs</param>
     /// <returns>position centre unit</returns>
-    protected Vector3 GetSnapPosition(Vector3 pos, float y)
+    protected Vector3 GetSnapPosition(Vector3 pos, float y = 0.0f)
     {
         return new Vector3(
                 ((int)pos.x + 0.5f),
@@ -75,31 +84,59 @@ public class DropBombScript : MonoBehaviour
                 ((int)pos.z + 0.5f));
     }
 
+
     public void DropMainBomb()
     {
-        Instantiate(bomb, GetSnapPosition(transform.position, bomb.transform.position.y), Quaternion.identity);
+        bombs.Add(Instantiate(bomb, GetSnapPosition(transform.position, bomb.transform.position.y), Quaternion.identity));
     }
 
     public void DropSecondaryBomb()
     {
         GameObject i;
+        bool isMine;
         switch (bombType)
         {
             case BombType.Flash:
                 i = this.FlashBomb;
+                isMine = false;
                 break;
             case BombType.Mine:
             default:
                 i = this.MineBomb;
+                isMine = true;
                 break;
         }
         this.secondaryBombCurentCurrentUse++;
-        Instantiate(i, GetSnapPosition(transform.position, i.transform.position.y), Quaternion.identity);
+
+        var instance = Instantiate(i, GetSnapPosition(transform.position, i.transform.position.y), Quaternion.identity);
+        if (isMine)
+            bombs.Add(instance);
 
     }
 
+    public bool CanDropMainBomb()
+    {
+        this.bombs.RemoveAll(x => x == null);
+        return bombs.Count < maxBomb;
+    }
     public bool CanDropSecondaryBomb()
     {
-        return (secondaryBombCurentCurrentUse < secondaryBombMaxUse || secondaryBombMaxUse == 0);
+        this.bombs.RemoveAll(x => x == null);
+        return (secondaryBombCurentCurrentUse < secondaryBombMaxUse || secondaryBombMaxUse == 0.0f) && bombs.Count < maxBomb;
+    }
+    /// <summary>
+    /// Si l'emplacement ne contient pas de bombe
+    /// </summary>
+    public bool IsEmptyLocation()
+    {
+        RaycastHit hit;
+        Debug.DrawRay(GetSnapPosition(transform.position), Vector3.up * 100.0f, Color.red, 900);
+        var v = GetSnapPosition(transform.position) + (Vector3.up * 50.0f);
+        if (Physics.Raycast(v, -Vector3.up, out hit, 100.0f, LayerCancelBombDrop.value, QueryTriggerInteraction.Collide))
+        {
+            Debug.Log("Can't drop the bomb ! ");
+            return false;
+        }
+        return true;
     }
 }

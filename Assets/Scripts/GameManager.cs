@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
 {
     private readonly string P1_SCORE_TXT = "Player1 : ";
     private readonly string P2_SCORE_TXT = "Player2 : ";
-    private readonly string WINNER = " win !";
     [SerializeField] 
     private GameObject PlayerPrefab;
     [SerializeField]
