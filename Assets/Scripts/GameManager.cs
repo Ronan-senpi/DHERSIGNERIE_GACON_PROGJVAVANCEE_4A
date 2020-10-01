@@ -55,7 +55,6 @@ public class GameManager : MonoBehaviour
         }
 
         if (p1Score >= maxScore || p2Score >= maxScore){
-            //détruire la map
             winnerTxt.enabled = true;
             if(p1Score >= maxScore)
                 winnerTxt.text = "Player 1 wins!";
