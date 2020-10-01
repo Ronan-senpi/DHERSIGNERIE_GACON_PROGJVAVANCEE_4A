@@ -150,10 +150,10 @@ MonoBehaviour:
   bombType: 2
   mainFireInput: Fire1.1
   SecondaryFireInput: Fire1.2
-  maxBomb: 1
+  maxBomb: 3
   LayerCancelBombDrop:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 13824
 --- !u!114 &8402278217242421071
 MonoBehaviour:
   m_ObjectHideFlags: 0

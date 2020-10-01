@@ -76,7 +76,7 @@ public class DropBombScript : MonoBehaviour
     /// <param name="pos">Position du player</param>
     /// <param name="y">Z du prefabs</param>
     /// <returns>position centre unit</returns>
-    protected Vector3 GetSnapPosition(Vector3 pos, float y = 0)
+    protected Vector3 GetSnapPosition(Vector3 pos, float y = 0.0f)
     {
         return new Vector3(
                 ((int)pos.x + 0.5f),
@@ -122,7 +122,7 @@ public class DropBombScript : MonoBehaviour
     public bool CanDropSecondaryBomb()
     {
         this.bombs.RemoveAll(x => x == null);
-        return (secondaryBombCurentCurrentUse < secondaryBombMaxUse || secondaryBombMaxUse == 0) && bombs.Count < maxBomb;
+        return (secondaryBombCurentCurrentUse < secondaryBombMaxUse || secondaryBombMaxUse == 0.0f) && bombs.Count < maxBomb;
     }
     /// <summary>
     /// Si l'emplacement ne contient pas de bombe
@@ -130,13 +130,13 @@ public class DropBombScript : MonoBehaviour
     public bool IsEmptyLocation()
     {
         RaycastHit hit;
-        Debug.DrawRay(GetSnapPosition(transform.position), transform.up * 1, Color.red,3);
-        var v = GetSnapPosition(transform.position);
-        if (!Physics.Raycast(v, Vector3.up, out hit, 2, LayerCancelBombDrop.value, QueryTriggerInteraction.Collide))
+        Debug.DrawRay(GetSnapPosition(transform.position), Vector3.up * 100.0f, Color.red, 900);
+        var v = GetSnapPosition(transform.position) + (Vector3.up * 50.0f);
+        if (Physics.Raycast(v, -Vector3.up, out hit, 100.0f, LayerCancelBombDrop.value, QueryTriggerInteraction.Collide))
         {
-            Debug.Log("Can drop the bomb ! ");
-            return true;
+            Debug.Log("Can't drop the bomb ! ");
+            return false;
         }
-        return false;
+        return true;
     }
 }
