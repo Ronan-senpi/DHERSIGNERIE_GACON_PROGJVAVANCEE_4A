@@ -17,14 +17,12 @@ public class MineScript : BombeBaseScript
     {
         yield return new WaitForSeconds(delayBeforeActivation);
         this.canBlowUp = true;
-        Debug.Log("can blow up");
         
     }
     protected virtual void OnTriggerEnter(Collider other)
     {
         if (canBlowUp && (triggerLayer.value & (1 << other.gameObject.layer)) > 0)
         {
-            Debug.Log("blowup !");
             Explosion();
         }
     }

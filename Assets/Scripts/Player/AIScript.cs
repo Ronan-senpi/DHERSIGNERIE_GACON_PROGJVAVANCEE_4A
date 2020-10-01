@@ -120,7 +120,7 @@ public class AIScript : PlayerDeplacementScript
         yield return new WaitForSeconds(attackCooldown);
         canAttack = true;
     }
-    protected override IEnumerator Stun(float StunDuration)
+    IEnumerator Stun(float StunDuration)
     {
         agent.isStopped = true;
         yield return new WaitForSeconds(StunDuration);
