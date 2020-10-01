@@ -13,4 +13,8 @@ public class ExplosionFlashScript : ExplosionBaseScript
             pylr.Stuned(StunDuration);
         }
     }
+    protected override void MakeItBlewUp()
+    {
+        //You can't make bl
+    }
 }
