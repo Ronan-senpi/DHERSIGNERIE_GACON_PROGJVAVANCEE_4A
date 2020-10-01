@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Button RestartBtn;
     [SerializeField] private Image RestartImg;
     [SerializeField] private Text RestartBtnText;
+    [SerializeField] private Button MenuBtn;
+    [SerializeField] private Image MenuImg;
+    [SerializeField] private Text MenuBtnText;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +61,9 @@ public class GameManager : MonoBehaviour
             RestartBtn.enabled = true;
             RestartImg.enabled = true;
             RestartBtnText.enabled = true;
+            MenuBtn.enabled = true;
+            MenuImg.enabled = true;
+            MenuBtnText.enabled = true;
         }
 
     }
@@ -69,8 +75,9 @@ public class GameManager : MonoBehaviour
         RestartBtn.enabled = false;
         RestartImg.enabled = false;
         RestartBtnText.enabled = false;
-        //Instantiate<GameObject>(PlayerPrefab, Vector3.zero, Quaternion.identity);
-        //Instantiate<GameObject>(PlayerPrefab, Vector3.one, Quaternion.identity);
+        MenuBtn.enabled = false;
+        MenuImg.enabled = false;
+        MenuBtnText.enabled = false;
     }
 
     public void RestartGame()
