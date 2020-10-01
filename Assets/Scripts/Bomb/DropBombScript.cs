@@ -16,8 +16,6 @@ public class DropBombScript : MonoBehaviour
     [SerializeField]
     private GameObject MineBomb;
     [SerializeField]
-    protected BombType bombType;
-    [SerializeField]
     private string mainFireInput = "Fire1.1";
     [SerializeField]
     private string SecondaryFireInput = "Fire1.2";
@@ -29,16 +27,26 @@ public class DropBombScript : MonoBehaviour
     List<GameObject> bombs = new List<GameObject>();
     protected int secondaryBombMaxUse = 1;
     protected int secondaryBombCurentCurrentUse = 0;
+
+    private string SecondaryBomb;
     private void Start()
     {
+        if (gameObject.tag=="Player"){
+            SecondaryBomb = PlayerPrefs.GetString("BombP1", "No");
+        }
+        else if (gameObject.tag=="Player 2"){
+            SecondaryBomb = PlayerPrefs.GetString("BombP2", "No");
+        }
+
+
         BombeBaseScript bbs;
-        switch (bombType)
+        switch (SecondaryBomb)
         {
-            case BombType.Flash:
+            case "Flash":
                 bbs = this.FlashBomb.GetComponent<BombeBaseScript>();
                 SetMaxUse(bbs);
                 break;
-            case BombType.Mine:
+            case "Mine":
             default:
                 bbs = this.MineBomb.GetComponent<BombeBaseScript>();
                 SetMaxUse(bbs);
@@ -94,13 +102,13 @@ public class DropBombScript : MonoBehaviour
     {
         GameObject i;
         bool isMine;
-        switch (bombType)
+        switch (SecondaryBomb)
         {
-            case BombType.Flash:
+            case "Flash":
                 i = this.FlashBomb;
                 isMine = false;
                 break;
-            case BombType.Mine:
+            case "Mine":
             default:
                 i = this.MineBomb;
                 isMine = true;
