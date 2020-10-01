@@ -31,7 +31,6 @@ public class DropBombScript : MonoBehaviour
     private string SecondaryBomb;
     private void Start()
     {
-        //SecondaryBomb = PlayerPrefs.GetString("BombP1", "No");
         if (gameObject.tag=="Player"){
             SecondaryBomb = PlayerPrefs.GetString("BombP1", "No");
         }
