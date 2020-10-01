@@ -9,6 +9,20 @@ public class ExplosionBaseScript : MonoBehaviour
     protected float Duration = 1f;
     [SerializeField]
     protected LayerMask hitLayer;
+    [SerializeField]
+    protected LayerMask BombLayer;
+
+    // Start is called before the first frame update
+    protected virtual void Start()
+    {
+        StartCoroutine(EndExplosionAfterDuration());
+        MakeItBlewUp();
+    }
+    protected IEnumerator EndExplosionAfterDuration()
+    {
+        yield return new WaitForSeconds(Duration);
+        Destroy(gameObject);
+    }
     protected virtual void OnTriggerEnter(Collider other)
     {
         //Compare sur les bit et non sur la text plus rapide
@@ -17,25 +31,29 @@ public class ExplosionBaseScript : MonoBehaviour
             hit(other);
         }
     }
-    // Start is called before the first frame update
-    protected void Start()
-    {
-        StartCoroutine(EndExplosionAfterDuration());
-    }
-    protected IEnumerator EndExplosionAfterDuration()
-    {
-        yield return new WaitForSeconds(Duration);
-        Destroy(gameObject);
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     protected virtual void hit(Collider other)
     {
-        Debug.Log("You blow something you can blow !! :o ");
         Destroy(other.gameObject);
+    }
+    protected virtual void MakeItBlewUp()
+    {
+        RaycastHit hit;
+        var v = transform.position + (Vector3.up * 50.0f);
+        if (Physics.Raycast(v, -Vector3.up, out hit, 100.0f, BombLayer.value, QueryTriggerInteraction.Collide))
+        {
+            Debug.Log("Make it bl");
+            BombeBaseScript bbs = hit.transform.GetComponent<BombeBaseScript>();
+            if (bbs != null)
+            {
+                StartCoroutine(delay(bbs));
+
+            }
+        }
+    }
+    IEnumerator delay(BombeBaseScript bbs)
+    {
+        yield return new WaitForSeconds(0.25f);
+        bbs.Explosion();
     }
 }

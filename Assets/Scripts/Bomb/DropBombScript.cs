@@ -130,11 +130,9 @@ public class DropBombScript : MonoBehaviour
     public bool IsEmptyLocation()
     {
         RaycastHit hit;
-        Debug.DrawRay(GetSnapPosition(transform.position), Vector3.up * 100.0f, Color.red, 900);
         var v = GetSnapPosition(transform.position) + (Vector3.up * 50.0f);
         if (Physics.Raycast(v, -Vector3.up, out hit, 100.0f, LayerCancelBombDrop.value, QueryTriggerInteraction.Collide))
         {
-            Debug.Log("Can't drop the bomb ! ");
             return false;
         }
         return true;

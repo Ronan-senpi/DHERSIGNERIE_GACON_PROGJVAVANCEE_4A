@@ -8,7 +8,7 @@ public class MineScript : BombeBaseScript
     protected LayerMask triggerLayer;
     [SerializeField]
     protected float delayBeforeActivation = 1;
-    protected bool canBlowUp = false;
+    protected bool canBlewUp = false;
     protected override void Start()
     {
         StartCoroutine(DelayBeforeActivation()); 
@@ -16,12 +16,12 @@ public class MineScript : BombeBaseScript
     protected IEnumerator DelayBeforeActivation()
     {
         yield return new WaitForSeconds(delayBeforeActivation);
-        this.canBlowUp = true;
+        this.canBlewUp = true;
         
     }
     protected virtual void OnTriggerEnter(Collider other)
     {
-        if (canBlowUp && (triggerLayer.value & (1 << other.gameObject.layer)) > 0)
+        if (canBlewUp && (triggerLayer.value & (1 << other.gameObject.layer)) > 0)
         {
             Explosion();
         }
