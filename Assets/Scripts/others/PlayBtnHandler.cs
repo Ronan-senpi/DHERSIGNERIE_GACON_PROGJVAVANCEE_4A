@@ -6,6 +6,18 @@ using UnityEngine.SceneManagement;
 public class PlayBtnHandler : MonoBehaviour
 {
     public void play(){
-        SceneManager.LoadScene("GameScene");
+        int map = PlayerPrefs.GetInt("MapNumber",1);
+        
+        switch(map){
+            case 1:
+                SceneManager.LoadScene("Map1Scene");
+            break;
+            case 2:
+                SceneManager.LoadScene("GameScene");
+            break;
+            default:
+                SceneManager.LoadScene("GameScene");
+            break;
+        }
     }
 }
