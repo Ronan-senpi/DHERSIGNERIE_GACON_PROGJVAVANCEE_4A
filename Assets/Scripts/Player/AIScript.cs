@@ -20,7 +20,10 @@ public class AIScript : PlayerDeplacementScript
         StartCoroutine(Cooldown(1.5f));
 
     }
-
+    protected override void Update()
+    {
+        //Cancel player move
+    }
     private void FixedUpdate()
     {
         if (!canAttack)
