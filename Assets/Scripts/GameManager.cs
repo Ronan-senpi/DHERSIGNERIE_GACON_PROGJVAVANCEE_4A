@@ -10,16 +10,19 @@ public class GameManager : MonoBehaviour
 {
     private readonly string P1_SCORE_TXT = "Player1 : ";
     private readonly string P2_SCORE_TXT = "Player2 : ";
+    private readonly string REMAINING_TXT = " HP";
+    private bool isFinished = false;
+
     [SerializeField] 
     private GameObject PlayerPrefab;
     [SerializeField]
     private int maxScore = 3;
     [SerializeField]
     private TextMeshProUGUI p1ScoreTxt;
-    private int p1Score = 0;
+    private int p1Score = 1;
     [SerializeField]
     private TextMeshProUGUI p2ScoreTxt;
-    private int p2Score = 0;
+    private int p2Score = 1;
 
     [SerializeField]
     private TextMeshProUGUI winnerTxt;
@@ -34,6 +37,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        p1Score = maxScore;
+        p2Score = maxScore;
+
         StartGame();
         
         Debug.Log("P1 : " + PlayerPrefs.GetString("BombP1", "No"));
@@ -45,34 +51,35 @@ public class GameManager : MonoBehaviour
     {
         if (playerId == 1)
         {
-            p2Score++;
-            p2ScoreTxt.text = P2_SCORE_TXT + p2Score.ToString();
+            p1Score--;
+            p1ScoreTxt.text = P1_SCORE_TXT + p1Score.ToString() + REMAINING_TXT;
         }
         else
         {
-            p1Score++;
-            p1ScoreTxt.text = P1_SCORE_TXT + p1Score.ToString();
+            p2Score--;
+            p2ScoreTxt.text = P2_SCORE_TXT + p2Score.ToString() + REMAINING_TXT;
         }
 
-        if (p1Score >= maxScore || p2Score >= maxScore){
+        if (p1Score <= 0 || p2Score <= 0){
             winnerTxt.enabled = true;
-            if(p1Score >= maxScore)
-                winnerTxt.text = "Player 1 wins!";
-            else
+            if(p1Score <= 0)
                 winnerTxt.text = "Player 2 wins!";
+            else
+                winnerTxt.text = "Player 1 wins!";
             RestartBtn.enabled = true;
             RestartImg.enabled = true;
             RestartBtnText.enabled = true;
             MenuBtn.enabled = true;
             MenuImg.enabled = true;
             MenuBtnText.enabled = true;
+            isFinished=true;
         }
 
     }
     public void StartGame()
     {
-        p1ScoreTxt.text = P1_SCORE_TXT + p1Score.ToString();
-        p2ScoreTxt.text = P2_SCORE_TXT + p2Score.ToString();
+        p1ScoreTxt.text = P1_SCORE_TXT + p1Score.ToString() + REMAINING_TXT;
+        p2ScoreTxt.text = P2_SCORE_TXT + p2Score.ToString() + REMAINING_TXT;
         winnerTxt.enabled = false;
         RestartBtn.enabled = false;
         RestartImg.enabled = false;
@@ -84,10 +91,10 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        /*p1Score = 0;
-        p2Score = 0;
-        StartGame();*/
-        
         Application.LoadLevel(Application.loadedLevel);
+    }
+
+    public bool IsFinished(){
+        return isFinished;
     }
 }
