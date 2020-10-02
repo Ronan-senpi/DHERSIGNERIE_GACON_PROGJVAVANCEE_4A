@@ -15933,6 +15933,11 @@ PrefabInstance:
       propertyPath: MenuBtnText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2254580045346200195, guid: 971c8478b6e6254449761fb0be04fe44,
+        type: 3}
+      propertyPath: inMenu
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2254580045346200196, guid: 971c8478b6e6254449761fb0be04fe44,
         type: 3}
       propertyPath: m_Name

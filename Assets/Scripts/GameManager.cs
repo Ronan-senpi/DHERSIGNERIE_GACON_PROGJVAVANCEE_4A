@@ -71,14 +71,17 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        p1Score = maxScore;
-        p2Score = maxScore;
+        if (!inMenu)
+        {
+            p1Score = maxScore;
+            p2Score = maxScore;
 
-        StartGame();
+            StartGame();
 
-        Debug.Log("P1 : " + PlayerPrefs.GetString("BombP1", "No"));
+            Debug.Log("P1 : " + PlayerPrefs.GetString("BombP1", "No"));
 
-        Debug.Log("P2 : " + PlayerPrefs.GetString("BombP2", "No"));
+            Debug.Log("P2 : " + PlayerPrefs.GetString("BombP2", "No"));
+        }
     }
 
     public void EndRound(int playerId)
