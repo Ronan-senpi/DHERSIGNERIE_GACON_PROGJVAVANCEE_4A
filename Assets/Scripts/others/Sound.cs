@@ -47,6 +47,11 @@ namespace Assets.Scripts.others
 
         [SerializeField]
         private SoundType type;
+        public SoundType GetSoundType()
+        {
+            return type;
+        }
+
         public AudioSource Source { get; set; }
     }
 }

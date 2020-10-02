@@ -2,8 +2,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
@@ -130,6 +132,7 @@ public class AudioManager : MonoBehaviour
             yield return null;
         }
 
+        StopCoroutine("FadeIn");
         audioSource.volume = maxVolumeMusic;
     }
     /// <summary>
@@ -151,5 +154,23 @@ public class AudioManager : MonoBehaviour
 
         audioSource.Stop();
         audioSource.volume = startVolume;
+        StopCoroutine("FadeOut");
+    }
+
+    public void SetFxVolume(float vol)
+    {
+        Sound[] ss = sounds.Where(x => x.GetSoundType() == SoundType.Fx).ToArray();
+        foreach (Sound s in ss)
+        {
+            s.Source.volume = vol;
+        }
+    }
+    public void SetMusicVolume(float vol)
+    {
+        Sound[] ss = sounds.Where(x => x.GetSoundType() == SoundType.Music).ToArray();
+        foreach (Sound s in ss)
+        {
+            s.Source.volume = vol;
+        }
     }
 }
