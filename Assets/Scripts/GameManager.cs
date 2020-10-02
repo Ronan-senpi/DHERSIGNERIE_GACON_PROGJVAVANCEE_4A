@@ -71,10 +71,13 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+
         if (!inMenu)
         {
             p1Score = maxScore;
             p2Score = maxScore;
+
+            HandleIA();
 
             StartGame();
 
@@ -97,20 +100,22 @@ public class GameManager : MonoBehaviour
             p2ScoreTxt.text = P2_SCORE_TXT + p2Score.ToString() + REMAINING_TXT;
         }
 
-        if (p1Score <= 0 || p2Score <= 0)
-        {
-            winnerTxt.enabled = true;
-            if (p1Score <= 0)
-                winnerTxt.text = "Player 2 wins!";
-            else
-                winnerTxt.text = "Player 1 wins!";
-            RestartBtn.enabled = true;
-            RestartImg.enabled = true;
-            RestartBtnText.enabled = true;
-            MenuBtn.enabled = true;
-            MenuImg.enabled = true;
-            MenuBtnText.enabled = true;
-            isFinished = true;
+        if(!isFinished){
+            if (p1Score <= 0 || p2Score <= 0)
+            {
+                winnerTxt.enabled = true;
+                if (p1Score <= 0)
+                    winnerTxt.text = "Player 2 wins!";
+                else
+                    winnerTxt.text = "Player 1 wins!";
+                RestartBtn.enabled = true;
+                RestartImg.enabled = true;
+                RestartBtnText.enabled = true;
+                MenuBtn.enabled = true;
+                MenuImg.enabled = true;
+                MenuBtnText.enabled = true;
+                isFinished = true;
+            }
         }
 
     }
@@ -146,11 +151,13 @@ public class GameManager : MonoBehaviour
     }
     public void RestartGame()
     {
+        Time.timeScale = 1;
         Application.LoadLevel(Application.loadedLevel);
     }
     public void ResumeGame()
     {
-        Time.timeScale = 1;
+        if(Time.timeScale==0)
+            Time.timeScale = 1;
         isInPause = false;
         ResumeBtnEnable(false);
         RestartBtnEnable(false);
@@ -170,5 +177,13 @@ public class GameManager : MonoBehaviour
     public bool IsFinished()
     {
         return isFinished;
+    }
+
+    public void HandleIA(){
+        int IA = PlayerPrefs.GetInt("IA", 0);
+        //GameObject Player2 =  GameObject.Find("Player2");
+        if(IA == 1){
+            Destroy(GameObject.Find("Player2"));
+        }
     }
 }

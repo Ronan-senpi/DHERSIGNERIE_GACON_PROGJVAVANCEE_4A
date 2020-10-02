@@ -7,13 +7,11 @@ using Assets.Scripts.others;
 
 public class BombDropdownHandler : MonoBehaviour
 {
-
-
-    private void Start()
-    {
+    private void Start() {
         HandleInputDataP1(GetComponent<Dropdown>().value);
         HandleInputDataP2(GetComponent<Dropdown>().value);
     }
+
     public void HandleInputDataP1(int val)
     {
         switch (val)
