@@ -1,7 +1,8 @@
 # DHERSIGNERIE_GACON_PROGJVAVANCEE_4A
 Déplacement : 
-- Player 1 : zqsd ae
-- Player 2 : oklm ip
+- Bob : zqsd ae
+- Risoto : oklm ip
+
 # External Use
 ### Sounds :
 [Menu](https://assetstore.unity.com/packages/audio/music/toon-adventure-soundtrack-60684)
