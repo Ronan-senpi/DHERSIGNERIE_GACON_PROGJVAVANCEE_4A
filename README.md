@@ -1,4 +1,47 @@
 # DHERSIGNERIE_GACON_PROGJVAVANCEE_4A
+Déplacement : 
+- Player 1 : zqsd ae
+- Player 2 : oklm ip
+# External Use
+### Sounds :
+[Menu](https://assetstore.unity.com/packages/audio/music/toon-adventure-soundtrack-60684)
+
+[Battle](https://assetstore.unity.com/packages/audio/music/toon-battle-soundtrack-60676)
+
+[menu Click](https://freesound.org/people/InspectorJ/sounds/411493/)
+
+[boom](https://freesound.org/people/ryansnook/sounds/110113/)
+
+[flash](https://freesound.org/people/FlashTrauma/sounds/398274/)
+
+
+### 3D 
+[House](https://assetstore.unity.com/packages/3d/environments/fantasy/low-poly-rts-house-17748)
+
+[Tree](https://assetstore.unity.com/packages/3d/vegetation/trees/low-poly-tree-pack-57866)
+
+[Bob](https://assetstore.unity.com/packages/3d/characters/easy-primitive-people-161846)
+
+### Texture
+
+[Wood](https://www.freepik.com/vectors/background) (Normalmap faite maison)
+
+[wall](https://www.blendswap.com/blend/12461) (Normalmap faite maison)
+
+[Grass](https://assetstore.unity.com/packages/2d/textures-materials/floors/hand-painted-grass-texture-78552)
+
+[Fence](https://assetstore.unity.com/packages/2d/textures-materials/floors/hand-painted-stone-texture-73949)
+
+### Particle
+
+[Explosion](https://assetstore.unity.com/packages/vfx/particles/fire-explosions/explosive-toon-vfx-texture-free-11117)
+
+### Police
+
+[Sketch 3d](https://www.dafont.com/fr/sketch-3d.font)
+
+[Chicken Quiche](https://www.dafont.com/chicken-quiche.font)
+
 
 ## Taupe.Bob
 
