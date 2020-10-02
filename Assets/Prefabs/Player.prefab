@@ -148,13 +148,13 @@ MonoBehaviour:
     type: 3}
   MineBomb: {fileID: 2476078640237297053, guid: 4a3e17800b0a181478a6c2c8bef48b72,
     type: 3}
-  bombType: 2
   mainFireInput: Fire1.1
   SecondaryFireInput: Fire1.2
   maxBomb: 3
   LayerCancelBombDrop:
     serializedVersion: 2
     m_Bits: 13824
+  SecondaryBomb: 0
 --- !u!114 &8402278217242421071
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -24,29 +24,33 @@ public class DropBombScript : MonoBehaviour
     [SerializeField]
     private LayerMask LayerCancelBombDrop;
 
+    [SerializeField]
+    private BombType SecondaryBomb;
+
     List<GameObject> bombs = new List<GameObject>();
     protected int secondaryBombMaxUse = 1;
     protected int secondaryBombCurentCurrentUse = 0;
-    
-    public string SecondaryBomb;
     private void Start()
     {
-        if (gameObject.tag=="Player"){
-            SecondaryBomb = PlayerPrefs.GetString("BombP1", "No");
+        if (gameObject.tag == "Player")
+        {
+            SecondaryBomb = (BombType)Enum.Parse(typeof(BombType), PlayerPrefs.GetString("BombP1", "No"), true);
+
         }
-        else if (gameObject.tag=="Player 2"){
-            SecondaryBomb = PlayerPrefs.GetString("BombP2", "No");
+        else if (gameObject.tag == "Player 2")
+        {
+            SecondaryBomb = (BombType)Enum.Parse(typeof(BombType), PlayerPrefs.GetString("BombP2", "No"), true);
         }
 
 
         BombeBaseScript bbs;
         switch (SecondaryBomb)
         {
-            case "Flash":
+            case BombType.Flash:
                 bbs = this.FlashBomb.GetComponent<BombeBaseScript>();
                 SetMaxUse(bbs);
                 break;
-            case "Mine":
+            case BombType.Mine:
             default:
                 bbs = this.MineBomb.GetComponent<BombeBaseScript>();
                 SetMaxUse(bbs);
@@ -104,11 +108,11 @@ public class DropBombScript : MonoBehaviour
         bool isMine;
         switch (SecondaryBomb)
         {
-            case "Flash":
+            case BombType.Flash:
                 i = this.FlashBomb;
                 isMine = false;
                 break;
-            case "Mine":
+            case BombType.Mine:
             default:
                 i = this.MineBomb;
                 isMine = true;

@@ -11,6 +11,12 @@ public class ExplosionBaseScript : MonoBehaviour
     protected LayerMask hitLayer;
     [SerializeField]
     protected LayerMask BombLayer;
+    public bool detectBomb { get; set; }
+
+    private void Awake()
+    {
+        detectBomb = true;
+    }
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -40,7 +46,7 @@ public class ExplosionBaseScript : MonoBehaviour
     {
         RaycastHit hit;
         var v = transform.position + (Vector3.up * 50.0f);
-        if (Physics.Raycast(v, -Vector3.up, out hit, 100.0f, BombLayer.value, QueryTriggerInteraction.Collide))
+        if (detectBomb && Physics.Raycast(v, -Vector3.up, out hit, 100.0f, BombLayer.value, QueryTriggerInteraction.Collide))
         {
             Debug.Log("Make it bl");
             BombeBaseScript bbs = hit.transform.GetComponent<BombeBaseScript>();

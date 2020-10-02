@@ -293,8 +293,8 @@ MonoBehaviour:
   maxBomb: 1
   LayerCancelBombDrop:
     serializedVersion: 2
-    m_Bits: 0
-  SecondaryBomb: 
+    m_Bits: 13824
+  SecondaryBomb: 0
 --- !u!114 &142913365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6160,11 +6160,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4524038845513812245, guid: 513a4517668657c4a9f08162dac76720,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 0a86cf04f94b31e408aeaa8fa3cbd160, type: 2}
     - target: {fileID: 4524038845513812246, guid: 513a4517668657c4a9f08162dac76720,
         type: 3}
       propertyPath: gameManager
@@ -6542,7 +6537,7 @@ MonoBehaviour:
   LayerCancelBombDrop:
     serializedVersion: 2
     m_Bits: 0
-  SecondaryBomb: 
+  SecondaryBomb: 0
 --- !u!54 &5094389666916544892
 Rigidbody:
   m_ObjectHideFlags: 0
