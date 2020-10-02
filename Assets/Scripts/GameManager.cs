@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
         p1Score = maxScore;
         p2Score = maxScore;
 
+        HandleIA();
+
         StartGame();
         
         Debug.Log("P1 : " + PlayerPrefs.GetString("BombP1", "No"));
@@ -96,5 +98,13 @@ public class GameManager : MonoBehaviour
 
     public bool IsFinished(){
         return isFinished;
+    }
+
+    public void HandleIA(){
+        int IA = PlayerPrefs.GetInt("IA", 0);
+        //GameObject Player2 =  GameObject.Find("Player2");
+        if(IA == 1){
+            Destroy(GameObject.Find("Player2"));
+        }
     }
 }

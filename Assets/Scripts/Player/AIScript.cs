@@ -21,6 +21,8 @@ public class AIScript : PlayerDeplacementScript
     // Start is called before the first frame update
     void Start()
     {
+        if(PlayerPrefs.GetInt("IA", 0) == 0)
+            Destroy(gameObject);
         StartCoroutine(Cooldown(1.5f));
 
     }
