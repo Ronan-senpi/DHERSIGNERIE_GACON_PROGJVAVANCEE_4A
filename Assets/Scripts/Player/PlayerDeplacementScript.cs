@@ -58,11 +58,7 @@ public class PlayerDeplacementScript : MonoBehaviour
     protected virtual IEnumerator Stun(float StunDuration)
     {
         this.stunned=true;
-        //TODO changer le gameobject en jaune pendant le stun
-        //gameObject.GetComponent<MeshRenderer>().material.SetTexture();
         yield return new WaitForSeconds(StunDuration);
-        //TODO Prendre le material du gameObject comme variable pour remettre comme avant
-        //gameObject.renderer.material = null;
         this.stunned=false;
     }
 

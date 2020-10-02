@@ -21,12 +21,6 @@ public class AIScript : PlayerDeplacementScript
 
     }
 
-    // Update is called once per frame
-    protected override void Update()
-    {
-
-    }
-
     private void FixedUpdate()
     {
         if (!canAttack)

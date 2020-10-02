@@ -42,6 +42,9 @@ public class ExplosionBaseScript : MonoBehaviour
     {
         Destroy(other.gameObject);
     }
+    /// <summary>
+    /// Si on une bombe dans une case cela la fait exploser
+    /// </summary>
     protected virtual void MakeItBlewUp()
     {
         RaycastHit hit;

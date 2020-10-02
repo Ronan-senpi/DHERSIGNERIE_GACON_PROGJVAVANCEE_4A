@@ -28,6 +28,9 @@ public class BombeBaseScript : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Generate Explosion
+    /// </summary>
     public virtual void Explosion()
     {
         GameObject go = Instantiate(explosionObject, gameObject.transform.position, Quaternion.identity);
