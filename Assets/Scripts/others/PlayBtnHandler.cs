@@ -10,10 +10,10 @@ public class PlayBtnHandler : MonoBehaviour
         
         switch(map){
             case 1:
-                SceneManager.LoadScene("Map1Scene");
+                SceneManager.LoadScene("GameScene");
             break;
             case 2:
-                SceneManager.LoadScene("GameScene");
+                SceneManager.LoadScene("Map1Scene");
             break;
             default:
                 SceneManager.LoadScene("GameScene");
