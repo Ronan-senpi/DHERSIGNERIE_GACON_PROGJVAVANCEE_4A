@@ -8,10 +8,6 @@ public class AIScript : PlayerDeplacementScript
     [SerializeField]
     private float cooldown;
     [SerializeField]
-    private GameObject target;
-    [SerializeField]
-    private NavMeshAgent agent;
-    [SerializeField]
     DropBombScript dropBomb;
 
     bool canAttack = false;
@@ -28,21 +24,7 @@ public class AIScript : PlayerDeplacementScript
     // Update is called once per frame
     protected override void Update()
     {
-        //agent.SetDestination(target.transform.position);
 
-        //if (agent.remainingDistance != Mathf.Infinity && agent.remainingDistance <= agent.stoppingDistance && canAttack)
-        //{
-        //    canAttack = false;
-        //    if (dropBomb.CanDropSecondaryBomb() && Random.Range(0, 2) == 1)
-        //    {
-        //        dropBomb.DropSecondaryBomb();
-        //    }
-        //    else
-        //    {
-        //        dropBomb.DropMainBomb();
-        //    }
-        //    StartCoroutine(Cooldown(attackCooldown));
-        //}
     }
 
     private void FixedUpdate()
@@ -119,11 +101,5 @@ public class AIScript : PlayerDeplacementScript
     {
         yield return new WaitForSeconds(attackCooldown);
         canAttack = true;
-    }
-    IEnumerator Stun(float StunDuration)
-    {
-        agent.isStopped = true;
-        yield return new WaitForSeconds(StunDuration);
-        agent.isStopped = false;
     }
 }
