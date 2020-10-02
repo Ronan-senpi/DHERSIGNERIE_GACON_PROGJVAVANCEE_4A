@@ -19,6 +19,7 @@ public class MineScript : BombeBaseScript
         this.canBlewUp = true;
         
     }
+
     protected virtual void OnTriggerEnter(Collider other)
     {
         if (canBlewUp && (triggerLayer.value & (1 << other.gameObject.layer)) > 0)

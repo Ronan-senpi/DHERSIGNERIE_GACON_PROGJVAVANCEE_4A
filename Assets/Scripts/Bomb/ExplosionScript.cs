@@ -21,8 +21,6 @@ public class ExplosionScript : ExplosionBaseScript
 
         if ((PlayerLayer.value & (1 << other.gameObject.layer)) > 0)
         {
-            //other.GetComponent<SCRIPT DE FIN DE VIE DU PLAYER>();
-            //Application.LoadLevel(Application.loadedLevel);
             var pds = other.GetComponent<PlayerDeathScript>();
 
             if (pds != null && !other.GetComponent<PlayerDeplacementScript>().IsInvincible())

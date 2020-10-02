@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     private readonly string REMAINING_TXT = " HP";
     private bool isFinished = false;
-
+    [Header("Player")]
     [SerializeField]
     private GameObject PlayerPrefab;
     [SerializeField]
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     private bool inMenu = false;
     [SerializeField]
     private TextMeshProUGUI winnerTxt;
-
+    [Header("UI")]
     [SerializeField]
     private Button RestartBtn;
     [SerializeField]
@@ -42,7 +42,6 @@ public class GameManager : MonoBehaviour
     private Image MenuImg;
     [SerializeField]
     private Text MenuBtnText;
-
     [SerializeField]
     private Button ResumeBtn;
     [SerializeField]
@@ -71,19 +70,22 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-
         if (!inMenu)
         {
+
             p1Score = maxScore;
             p2Score = maxScore;
-
-            HandleIA();
 
             StartGame();
 
             Debug.Log("P1 : " + PlayerPrefs.GetString("BombP1", "No"));
 
             Debug.Log("P2 : " + PlayerPrefs.GetString("BombP2", "No"));
+        }
+        else
+        {
+            AudioManager.instance.Play("MainThemeMenu", 2f);
+            AudioManager.instance.Stop("MainThemeGame", 2f);
         }
     }
 
@@ -100,27 +102,29 @@ public class GameManager : MonoBehaviour
             p2ScoreTxt.text = P2_SCORE_TXT + p2Score.ToString() + REMAINING_TXT;
         }
 
-        if(!isFinished){
-            if (p1Score <= 0 || p2Score <= 0)
-            {
-                winnerTxt.enabled = true;
-                if (p1Score <= 0)
-                    winnerTxt.text = "Player 2 wins!";
-                else
-                    winnerTxt.text = "Player 1 wins!";
-                RestartBtn.enabled = true;
-                RestartImg.enabled = true;
-                RestartBtnText.enabled = true;
-                MenuBtn.enabled = true;
-                MenuImg.enabled = true;
-                MenuBtnText.enabled = true;
-                isFinished = true;
-            }
+        if (p1Score <= 0 || p2Score <= 0)
+        {
+            winnerTxt.enabled = true;
+            if (p1Score <= 0)
+                winnerTxt.text = "Player 2 wins!";
+            else
+                winnerTxt.text = "Player 1 wins!";
+            RestartBtn.enabled = true;
+            RestartImg.enabled = true;
+            RestartBtnText.enabled = true;
+            MenuBtn.enabled = true;
+            MenuImg.enabled = true;
+            MenuBtnText.enabled = true;
+            isFinished = true;
         }
 
     }
     public void StartGame()
     {
+
+        AudioManager.instance.Play("MainThemeGame", 2f);
+        AudioManager.instance.Stop("MainThemeMenu", 2f);
+
         p1ScoreTxt.text = P1_SCORE_TXT + p1Score.ToString() + REMAINING_TXT;
         p2ScoreTxt.text = P2_SCORE_TXT + p2Score.ToString() + REMAINING_TXT;
         winnerTxt.enabled = false;
@@ -151,13 +155,11 @@ public class GameManager : MonoBehaviour
     }
     public void RestartGame()
     {
-        Time.timeScale = 1;
         Application.LoadLevel(Application.loadedLevel);
     }
     public void ResumeGame()
     {
-        if(Time.timeScale==0)
-            Time.timeScale = 1;
+        Time.timeScale = 1;
         isInPause = false;
         ResumeBtnEnable(false);
         RestartBtnEnable(false);
@@ -177,13 +179,5 @@ public class GameManager : MonoBehaviour
     public bool IsFinished()
     {
         return isFinished;
-    }
-
-    public void HandleIA(){
-        int IA = PlayerPrefs.GetInt("IA", 0);
-        //GameObject Player2 =  GameObject.Find("Player2");
-        if(IA == 1){
-            Destroy(GameObject.Find("Player2"));
-        }
     }
 }

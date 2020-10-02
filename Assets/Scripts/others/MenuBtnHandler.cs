@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class MenuBtnHandler : MonoBehaviour
 {
     public void menu(){
-        if(Time.timeScale==0)
-            Time.timeScale = 1;
+
+        AudioManager.instance.Play("MenuInteraction");
         SceneManager.LoadScene("MenuScene");
     }
 }

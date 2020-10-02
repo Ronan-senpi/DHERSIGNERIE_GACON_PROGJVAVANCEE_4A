@@ -28,6 +28,9 @@ public class BombeBaseScript : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Generate Explosion
+    /// </summary>
     public virtual void Explosion()
     {
         GameObject go = Instantiate(explosionObject, gameObject.transform.position, Quaternion.identity);
@@ -69,9 +72,10 @@ public class BombeBaseScript : MonoBehaviour
 
         Destroy(gameObject);
     }
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
         StopAllCoroutines();
+        AudioManager.instance.Play("Boom");
     }
     /// <summary>
     /// Retourne le nombre d'utilisation max de la bombe (0 = infini)
