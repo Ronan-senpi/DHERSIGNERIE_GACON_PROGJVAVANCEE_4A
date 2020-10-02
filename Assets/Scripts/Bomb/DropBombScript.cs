@@ -27,8 +27,8 @@ public class DropBombScript : MonoBehaviour
     List<GameObject> bombs = new List<GameObject>();
     protected int secondaryBombMaxUse = 1;
     protected int secondaryBombCurentCurrentUse = 0;
-
-    private string SecondaryBomb;
+    
+    public string SecondaryBomb;
     private void Start()
     {
         if (gameObject.tag=="Player"){
