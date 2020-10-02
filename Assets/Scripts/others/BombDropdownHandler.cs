@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Assets.Scripts.others;
 
 public class BombDropdownHandler : MonoBehaviour
 {
@@ -13,30 +14,30 @@ public class BombDropdownHandler : MonoBehaviour
 
     public void HandleInputDataP1(int val)
     {
-        switch(val){
+        switch (val)
+        {
             case 0:
-                PlayerPrefs.SetString("BombP1","Flash");
-            break;
+                PlayerPrefs.SetString("BombP1", BombType.Flash.ToString());
+                break;
             case 1:
-                PlayerPrefs.SetString("BombP1","Mine");
-            break;
             default:
-            break;
+                PlayerPrefs.SetString("BombP1", BombType.Mine.ToString());
+                break;
         }
         PlayerPrefs.Save();
     }
 
     public void HandleInputDataP2(int val)
     {
-        switch(val){
+        switch (val)
+        {
             case 0:
-                PlayerPrefs.SetString("BombP2","Flash");
-            break;
+                PlayerPrefs.SetString("BombP2", BombType.Flash.ToString());
+                break;
             case 1:
-                PlayerPrefs.SetString("BombP2","Mine");
-            break;
             default:
-            break;
+                PlayerPrefs.SetString("BombP2", BombType.Mine.ToString());
+                break;
         }
         PlayerPrefs.Save();
     }

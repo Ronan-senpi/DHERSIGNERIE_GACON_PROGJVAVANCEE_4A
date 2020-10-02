@@ -154,6 +154,7 @@ MonoBehaviour:
   LayerCancelBombDrop:
     serializedVersion: 2
     m_Bits: 13824
+  SecondaryBomb: 0
 --- !u!114 &8402278217242421071
 MonoBehaviour:
   m_ObjectHideFlags: 0

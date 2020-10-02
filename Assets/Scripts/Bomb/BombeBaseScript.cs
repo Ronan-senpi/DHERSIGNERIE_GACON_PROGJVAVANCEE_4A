@@ -14,6 +14,8 @@ public class BombeBaseScript : MonoBehaviour
     [SerializeField]
     protected int nbMaxUse = 0;
     // Start is called before the first frame update
+
+    private bool aleredyExplod = false;
     protected virtual void Start()
     {
         StartCoroutine(DelayExplosion());
@@ -28,7 +30,12 @@ public class BombeBaseScript : MonoBehaviour
 
     public virtual void Explosion()
     {
-        Instantiate(explosionObject, gameObject.transform.position, Quaternion.identity);
+        GameObject go = Instantiate(explosionObject, gameObject.transform.position, Quaternion.identity);
+        ExplosionBaseScript ebs;
+        if (go.TryGetComponent<ExplosionBaseScript>(out ebs))
+        {
+            ebs.detectBomb = false;
+        }
         for (int i = 1; i <= range; i++)
         {
             //Pas opti mais pour le moment ... 
@@ -61,6 +68,10 @@ public class BombeBaseScript : MonoBehaviour
         }
 
         Destroy(gameObject);
+    }
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
     }
     /// <summary>
     /// Retourne le nombre d'utilisation max de la bombe (0 = infini)
