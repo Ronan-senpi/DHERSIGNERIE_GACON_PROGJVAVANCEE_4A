@@ -56,3 +56,21 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     type: 0
+  - name: Boom
+    clip: {fileID: 8300000, guid: b9375c01967ab0946bec1ade8b0bcd98, type: 3}
+    volume: 0.75
+    pitch: 1
+    loop: 0
+    type: 1
+  - name: Flash
+    clip: {fileID: 8300000, guid: 6fea87549e7a81a42b262563ef395841, type: 3}
+    volume: 0.75
+    pitch: 1
+    loop: 0
+    type: 1
+  - name: MenuInteraction
+    clip: {fileID: 8300000, guid: 84a88b8f5d6fb8a499eef42198078e94, type: 3}
+    volume: 0.75
+    pitch: 1
+    loop: 0
+    type: 1
