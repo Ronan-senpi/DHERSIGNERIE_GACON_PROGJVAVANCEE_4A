@@ -28,7 +28,8 @@ public class BombeBaseScript : MonoBehaviour
 
     public virtual void Explosion()
     {
-        Instantiate(explosionObject, gameObject.transform.position, Quaternion.identity);
+        GameObject go = Instantiate(explosionObject, gameObject.transform.position, Quaternion.identity);
+        go.transform.parent = gameObject.transform;
         for (int i = 1; i <= range; i++)
         {
             //Pas opti mais pour le moment ... 
