@@ -70,9 +70,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         if (!inMenu)
         {
-
+            HandleIA();
             p1Score = maxScore;
             p2Score = maxScore;
 
@@ -179,5 +180,18 @@ public class GameManager : MonoBehaviour
     public bool IsFinished()
     {
         return isFinished;
+    }
+    public void HandleIA()
+    {
+        int IA = PlayerPrefs.GetInt("IA", 0);
+        //GameObject Player2 =  GameObject.Find("Player2");
+        if (IA == 1)
+        {
+            Destroy(GameObject.Find("Player2"));
+        }
+        else
+        {
+            Destroy(GameObject.Find("IA"));
+        }
     }
 }
