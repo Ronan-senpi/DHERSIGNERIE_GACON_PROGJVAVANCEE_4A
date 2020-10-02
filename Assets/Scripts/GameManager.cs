@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     private readonly string REMAINING_TXT = " HP";
     private bool isFinished = false;
-
+    [Header("Player")]
     [SerializeField]
     private GameObject PlayerPrefab;
     [SerializeField]
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     private bool inMenu = false;
     [SerializeField]
     private TextMeshProUGUI winnerTxt;
-
+    [Header("UI")]
     [SerializeField]
     private Button RestartBtn;
     [SerializeField]
@@ -42,7 +42,6 @@ public class GameManager : MonoBehaviour
     private Image MenuImg;
     [SerializeField]
     private Text MenuBtnText;
-
     [SerializeField]
     private Button ResumeBtn;
     [SerializeField]
@@ -73,6 +72,7 @@ public class GameManager : MonoBehaviour
     {
         if (!inMenu)
         {
+
             p1Score = maxScore;
             p2Score = maxScore;
 
@@ -81,6 +81,11 @@ public class GameManager : MonoBehaviour
             Debug.Log("P1 : " + PlayerPrefs.GetString("BombP1", "No"));
 
             Debug.Log("P2 : " + PlayerPrefs.GetString("BombP2", "No"));
+        }
+        else
+        {
+            AudioManager.instance.Play("MainThemeMenu", 2f);
+            AudioManager.instance.Stop("MainThemeGame", 2f);
         }
     }
 
@@ -116,6 +121,10 @@ public class GameManager : MonoBehaviour
     }
     public void StartGame()
     {
+
+        AudioManager.instance.Play("MainThemeGame", 2f);
+        AudioManager.instance.Stop("MainThemeMenu", 2f);
+
         p1ScoreTxt.text = P1_SCORE_TXT + p1Score.ToString() + REMAINING_TXT;
         p2ScoreTxt.text = P2_SCORE_TXT + p2Score.ToString() + REMAINING_TXT;
         winnerTxt.enabled = false;

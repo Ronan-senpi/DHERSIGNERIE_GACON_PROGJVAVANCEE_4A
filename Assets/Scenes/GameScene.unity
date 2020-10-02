@@ -6057,6 +6057,11 @@ PrefabInstance:
       propertyPath: ResumeBtnText
       value: 
       objectReference: {fileID: 1324163910}
+    - target: {fileID: 2254580045346200195, guid: 971c8478b6e6254449761fb0be04fe44,
+        type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2254580045346200196, guid: 971c8478b6e6254449761fb0be04fe44,
         type: 3}
       propertyPath: m_Name
