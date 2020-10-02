@@ -6,7 +6,12 @@ public class RestartBtnHandler : MonoBehaviour
 {
     [SerializeField]
     GameManager gameManager;
-    public void restart(){
+    public void restart()
+    {
         gameManager.RestartGame();
+    }
+    public void Resume()
+    {
+        gameManager.ResumeGame();
     }
 }
