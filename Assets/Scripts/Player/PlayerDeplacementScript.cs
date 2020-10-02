@@ -24,18 +24,22 @@ public class PlayerDeplacementScript : MonoBehaviour
 
         if (Input.GetAxis(AxisHorizontal) > 0  ){
             direction.z++;
+            transform.eulerAngles = new Vector3(0, 0, 0);
         }
 
         if (Input.GetAxis(AxisHorizontal) < 0 ){
             direction.z--;
+            transform.eulerAngles = new Vector3(0, 180, 0);
         }
 
         if (Input.GetAxis(AxisVertical) > 0 ){
             direction.x--;
+            transform.eulerAngles = new Vector3(0, -90, 0);
         }
 
         if (Input.GetAxis(AxisVertical) < 0 ){
             direction.x++;
+            transform.eulerAngles = new Vector3(0, 90, 0);
         }
 
         if(!stunned && !invincible)

@@ -12,46 +12,52 @@ public class MapHandler : MonoBehaviour
     void Start()
     {
         map = 1;
-        PlayerPrefs.SetInt("MapNumber",map);
+        PlayerPrefs.SetInt("MapNumber", map);
         PlayerPrefs.Save();
         UpdateImage();
     }
 
 
-    public void Before(){
+    public void Before()
+    {
         map--;
-        if (map < 1){
-            map=total_map;
+        if (map < 1)
+        {
+            map = total_map;
         }
-        PlayerPrefs.SetInt("MapNumber",map);
+        PlayerPrefs.SetInt("MapNumber", map);
         PlayerPrefs.Save();
         UpdateImage();
     }
 
-    public void After(){
+    public void After()
+    {
         map++;
-        if (map > total_map){
-            map=1;
+        if (map > total_map)
+        {
+            map = 1;
         }
-        PlayerPrefs.SetInt("MapNumber",map);
+        PlayerPrefs.SetInt("MapNumber", map);
         PlayerPrefs.Save();
         UpdateImage();
     }
 
-    public void UpdateImage(){
+    public void UpdateImage()
+    {
         Sprite map_sprite;
-        switch(map){
+        switch (map)
+        {
             case 1:
                 map_sprite = Resources.Load<Sprite>("map1");
-            break;
+                break;
             case 2:
                 map_sprite = Resources.Load<Sprite>("map2");
-            break;
+                break;
             default:
                 map_sprite = Resources.Load<Sprite>("map1");
-            break;
+                break;
         }
-        
+
         gameObject.GetComponent<Image>().sprite = map_sprite;
     }
 
