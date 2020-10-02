@@ -134,7 +134,7 @@ public class DropBombScript : MonoBehaviour
     public bool CanDropSecondaryBomb()
     {
         this.bombs.RemoveAll(x => x == null);
-        return (secondaryBombCurentCurrentUse < secondaryBombMaxUse || secondaryBombMaxUse == 0.0f) && bombs.Count < maxBomb;
+        return (secondaryBombCurentCurrentUse < secondaryBombMaxUse || secondaryBombMaxUse == 0.0f) && bombs.Count < secondaryBombMaxUse;
     }
     /// <summary>
     /// Si l'emplacement ne contient pas de bombe
