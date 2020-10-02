@@ -69,9 +69,10 @@ public class BombeBaseScript : MonoBehaviour
 
         Destroy(gameObject);
     }
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
         StopAllCoroutines();
+        AudioManager.instance.Play("Boom");
     }
     /// <summary>
     /// Retourne le nombre d'utilisation max de la bombe (0 = infini)

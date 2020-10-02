@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2225600817768085003}
   - component: {fileID: 2225600817768085000}
   - component: {fileID: 2225600817768085001}
-  - component: {fileID: 2225600817768085108}
   - component: {fileID: 2004821571352748337}
+  - component: {fileID: 8452270460512030822}
   m_Layer: 9
   m_Name: BombFlash
   m_TagString: Untagged
@@ -96,23 +96,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2225600817768085108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2225600817768085007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5d1922e355e7b441afbc1fea3b14b80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timer: 1.5
-  explosionObject: {fileID: 7448683026526462048, guid: f4302394db3089f42b6a082e3348fa82,
-    type: 3}
-  range: 1
-  nbMaxUse: 1
 --- !u!95 &2004821571352748337
 Animator:
   serializedVersion: 3
@@ -132,6 +115,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8452270460512030822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2225600817768085007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94f36a7939581604eb4a3891ad48b632, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 1.5
+  explosionObject: {fileID: 7448683026526462048, guid: f4302394db3089f42b6a082e3348fa82,
+    type: 3}
+  range: 1
+  nbMaxUse: 1
 --- !u!1 &6365798196529628579
 GameObject:
   m_ObjectHideFlags: 0

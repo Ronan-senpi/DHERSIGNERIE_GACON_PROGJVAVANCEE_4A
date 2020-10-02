@@ -28,6 +28,10 @@ public class AudioManager : MonoBehaviour
         {
             instance = this;
         }
+        else
+        {
+            Destroy(gameObject);
+        }
 
         foreach (var s in sounds)
         {
@@ -35,6 +39,7 @@ public class AudioManager : MonoBehaviour
             s.Source.clip = s.GetClip();
             s.Source.volume = s.GetVolume();
             s.Source.pitch = s.Getpitch();
+            s.Source.loop = s.GetLoop();
         }
     }
 

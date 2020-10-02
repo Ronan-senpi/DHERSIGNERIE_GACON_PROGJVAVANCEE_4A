@@ -19,5 +19,7 @@ public class PlayBtnHandler : MonoBehaviour
                 SceneManager.LoadScene("GameScene");
             break;
         }
+
+        AudioManager.instance.Play("MenuInteraction");
     }
 }

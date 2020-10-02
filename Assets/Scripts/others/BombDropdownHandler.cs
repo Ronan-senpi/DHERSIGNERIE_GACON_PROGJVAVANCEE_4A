@@ -27,6 +27,7 @@ public class BombDropdownHandler : MonoBehaviour
                 break;
         }
         PlayerPrefs.Save();
+
     }
 
     public void HandleInputDataP2(int val)
@@ -42,5 +43,6 @@ public class BombDropdownHandler : MonoBehaviour
                 break;
         }
         PlayerPrefs.Save();
+
     }
 }

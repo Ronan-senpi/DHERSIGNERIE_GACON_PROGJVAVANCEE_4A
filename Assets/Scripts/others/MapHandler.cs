@@ -20,6 +20,7 @@ public class MapHandler : MonoBehaviour
 
     public void Before()
     {
+
         map--;
         if (map < 1)
         {
@@ -28,6 +29,8 @@ public class MapHandler : MonoBehaviour
         PlayerPrefs.SetInt("MapNumber", map);
         PlayerPrefs.Save();
         UpdateImage();
+
+        AudioManager.instance.Play("MenuInteraction");
     }
 
     public void After()
@@ -40,6 +43,8 @@ public class MapHandler : MonoBehaviour
         PlayerPrefs.SetInt("MapNumber", map);
         PlayerPrefs.Save();
         UpdateImage();
+
+        AudioManager.instance.Play("MenuInteraction");
     }
 
     public void UpdateImage()
